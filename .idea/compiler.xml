@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for Hardcore-plus" enabled="true">
+        <sourceOutputDir name="../../Desktop/serw/plugins/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../Desktop/serw/plugins/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Hardcore-plus" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
