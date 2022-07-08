@@ -16,7 +16,6 @@ public class BlockBreak implements Listener {
         Player p = e.getPlayer();
         ItemStack itemInHand = p.getInventory().getItemInMainHand();
         if (EnchantmentTarget.TOOL.includes(itemInHand)) {// sprawdzam, czy item w rece to narzedzie
-            p.sendMessage("check");
             Damageable d = (Damageable) itemInHand.getItemMeta();
             if(Chance.chance(30))
                 d.setDamage(d.getDamage() + 1);
