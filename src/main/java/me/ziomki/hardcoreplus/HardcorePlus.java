@@ -1,6 +1,7 @@
 package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Commands.PercentageTest;
+import me.ziomki.hardcoreplus.Listeners.BlockBreak;
 import me.ziomki.hardcoreplus.Listeners.MobFocus;
 import me.ziomki.hardcoreplus.Listeners.PlayerFall;
 import org.bukkit.command.CommandExecutor;
@@ -15,6 +16,7 @@ public class HardcorePlus extends JavaPlugin {
     public void onEnable() {
         addListener(new MobFocus());
         addListener(new PlayerFall());
+        addListener(new BlockBreak());
         addCommand("chance", new PercentageTest());
     }
 
