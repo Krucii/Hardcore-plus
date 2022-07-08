@@ -2,3 +2,8 @@ name: HardcorePlus
 version: 1.0
 main: me.ziomki.hardcoreplus.HardcorePlus
 api-version: 1.19
+
+commands:
+  chance:
+    description: test
+    usage: /<command>
