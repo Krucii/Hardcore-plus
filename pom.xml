@@ -29,8 +29,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <directory>C:\Users\Remek\Desktop\serw\plugins</directory>
-    </build>
-
 </project>
