@@ -31,4 +31,4 @@ jobs:
       env:
         DISCORD_WEBHOOK: https://discord.com/api/webhooks/994963925844115549/kvGaBW0TjloZZx6uLu8naKMd0x4PRTfPzIxSQy-ByaWUhb0PjIxT4D-A5L7Ii67B9sE7
       with:
-        args: artifact.zip
+        args: target/artifact.zip
