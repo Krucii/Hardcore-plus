@@ -11,9 +11,9 @@ public class MobFocus implements Listener {
 
     @EventHandler
     public void onAttack(EntityTargetEvent e) {
-        if (!(e instanceof Monster)) return;
-        Monster mob = (Monster) e;
+        LivingEntity entity = (LivingEntity) e.getEntity();
+        if (!(entity instanceof Monster)) return;
         PotionEffect drug = new PotionEffect(PotionEffectType.SPEED, 20*20, 2);
-        mob.addPotionEffect(drug);
+        entity.addPotionEffect(drug);
     }
 }
