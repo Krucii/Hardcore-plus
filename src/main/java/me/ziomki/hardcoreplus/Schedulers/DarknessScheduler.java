@@ -4,7 +4,6 @@ import me.ziomki.hardcoreplus.HardcorePlus;
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 
 import static me.ziomki.hardcoreplus.Listeners.PlayerMove.lightDamage;
 

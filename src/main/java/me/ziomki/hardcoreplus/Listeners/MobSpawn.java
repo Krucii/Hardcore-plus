@@ -10,11 +10,9 @@ public class MobSpawn implements Listener {
 
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent e) {
-        if (e.getEntity() instanceof Creeper) {
-            if (Chance.chance(5)) {
-                Creeper creeper = (Creeper)e.getEntity();
-                creeper.setPowered(true);
-            }
+        if (e.getEntity() instanceof Creeper c) {
+            if (Chance.chance(5))
+                c.setPowered(true);
         }
     }
 }
