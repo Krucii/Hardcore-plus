@@ -29,6 +29,7 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new FoodLevelChange());
         addListener(new MobSpawn());
         addListener(new PlayerMove());
+        addListener(new Lightning());
 
         addCommand("chance", new PercentageTest());
 
