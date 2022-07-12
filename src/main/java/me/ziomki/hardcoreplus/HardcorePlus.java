@@ -8,17 +8,31 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
+import static me.ziomki.hardcoreplus.Schedulers.DarknessScheduler.darkness;
+
 public class HardcorePlus extends JavaPlugin {
+
+    private static HardcorePlus instance;
+
+    public static HardcorePlus getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
+        instance = this;
+
         addListener(new MobFocus());
         addListener(new PlayerDeadItemsGone());
         addListener(new PlayerFall());
         addListener(new BlockBreak());
         addListener(new FoodLevelChange());
         addListener(new MobSpawn());
+        addListener(new PlayerMove());
+
         addCommand("chance", new PercentageTest());
+
+        darkness();
     }
 
     void addListener(Listener lis) {
