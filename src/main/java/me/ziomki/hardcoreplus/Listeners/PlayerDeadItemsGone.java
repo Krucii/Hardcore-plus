@@ -12,7 +12,8 @@ public class PlayerDeadItemsGone implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         for (int i = 0; i < e.getDrops().size(); i++) {
-            if (Chance.chance(50)) e.getDrops().set(i, new ItemStack(Material.AIR));
+            if (Chance.chance(50))
+                e.getDrops().set(i, new ItemStack(Material.AIR));
         }
 
     }

@@ -7,3 +7,6 @@ commands:
   chance:
     description: test
     usage: /<command>
+  list:
+    description: test
+    usage: /<command>
