@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class PlayerMove implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.GOLD, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
+    DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.YELLOW, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
 
     public static HashMap<Player, Boolean> lightDamage = new HashMap<>();
 

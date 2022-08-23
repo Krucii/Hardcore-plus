@@ -11,7 +11,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public class MobSpawn implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(5.0, Material.CREEPER_HEAD, ChatColor.DARK_GREEN, "Bombowa imprezka", "Naelektryzowane creepery nie będą już tak rzadkim widokiem.");
+    DifficultiesList adding = new DifficultiesList(5.0, Material.CREEPER_HEAD, ChatColor.DARK_GREEN, "Bombowa imprezka", "Naelektryzowane creepery nie są już tak rzadkim widokiem.");
 
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent e) {

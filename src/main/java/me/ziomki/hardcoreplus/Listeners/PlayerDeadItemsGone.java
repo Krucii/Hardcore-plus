@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerDeadItemsGone implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci tracimy połowę naszych przedmiotów.");
+    DifficultiesList adding = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci połowa przedmiotów znika.");
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {

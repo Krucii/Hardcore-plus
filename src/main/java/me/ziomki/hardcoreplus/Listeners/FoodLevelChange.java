@@ -11,7 +11,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class FoodLevelChange implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.DARK_GRAY, "Niedożywienie", "Większy spadek poziomu głodu na pustyni.");
+    DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.GRAY, "Susza", "Zwiększony spadek poziomu nasycenia na pustyni.");
 
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {

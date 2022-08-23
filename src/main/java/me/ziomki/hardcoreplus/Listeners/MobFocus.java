@@ -12,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class MobFocus implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące cię potwory są szybsze.");
+    DifficultiesList adding = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące graczy potwory są szybsze.");
 
     @EventHandler
     public void onAttack(EntityTargetEvent e) {
