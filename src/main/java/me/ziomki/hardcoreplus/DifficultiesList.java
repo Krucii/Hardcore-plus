@@ -1,39 +1,65 @@
 package me.ziomki.hardcoreplus;
 
-import lombok.Getter;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Getter
 public class DifficultiesList {
-    private static final HashMap<String, List<Object>> difficultiesList = new HashMap<>();
-    private final String name;
-    private final int category;
-    private final Double chance;
+    private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
+    private static Integer ID = 1;
+    private final String shortDesc, longDesc;
 
-    public DifficultiesList() {
-        this.name = "";
-        this.category = 0;
-        this.chance = 0.0;
+    public static Integer getID() {
+        return ID;
     }
-    public DifficultiesList(String name, int category, Double chance) {
-        this.name = name;
-        this.category = category;
+
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public String getLongDesc() {
+        return longDesc;
+    }
+
+    public Double getChance() {
+        return chance;
+    }
+
+    public Material getItem() {
+        return item;
+    }
+
+    public ChatColor getColor() {
+        return color;
+    }
+
+    private final Double chance;
+    private final Material item;
+    private final ChatColor color;
+
+    public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
         this.chance = chance;
+        this.item = item;
+        this.color = color;
+        this.shortDesc = shortDesc;
+        this.longDesc = longDesc;
         addEntry();
     }
 
-    public static HashMap<String, List<Object>> getDifficultiesList() {
+    public static HashMap<Integer, List<Object>> getDifficultiesList() {
         return difficultiesList;
     }
 
     private void addEntry() {
         List<Object> parameters = new ArrayList<>();
-        parameters.add(category);
         parameters.add(chance);
-        getDifficultiesList().put(name, parameters);
+        parameters.add(item);
+        parameters.add(color);
+        parameters.add(shortDesc);
+        parameters.add(longDesc);
+        getDifficultiesList().put(ID++, parameters);
     }
-
 }
