@@ -2,6 +2,7 @@ package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
 import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
+import me.ziomki.hardcoreplus.Events.EssentialsToGUI;
 import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -33,7 +34,9 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new EpicLightningTarget());
 
         addCommand("chance", new CheckPercentageTest());
-        addCommand("list", new CheckDifficulties());
+        addCommand("utrudnienia", new CheckDifficulties());
+
+        addListener(new EssentialsToGUI());
 
         darkness();
     }

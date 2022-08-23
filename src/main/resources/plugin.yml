@@ -7,6 +7,6 @@ commands:
   chance:
     description: test
     usage: /<command>
-  list:
-    description: test
+  utrudnienia:
+    description: Lista utrudnień trybu hardcore
     usage: /<command>

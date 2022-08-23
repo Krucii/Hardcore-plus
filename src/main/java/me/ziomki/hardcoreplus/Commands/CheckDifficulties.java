@@ -22,8 +22,16 @@ public class CheckDifficulties implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player p)) return true;
-        Inventory hardcoreMenu = Bukkit.createInventory(p, 45, ChatColor.RED + "Piekielne utrudnienia");
+        Inventory hardcoreMenu = Bukkit.createInventory(p, 45, ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia");
         AtomicInteger firstGap = new AtomicInteger(10);
+
+        // Szklane fillery
+        ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemMeta voidGlassMeta = voidGlass.getItemMeta();
+        voidGlassMeta.setDisplayName("");
+        voidGlass.setItemMeta(voidGlassMeta);
+        for (int i = 0; i < hardcoreMenu.getSize(); i++)
+            hardcoreMenu.setItem(i, voidGlass);
 
         // 0 - chance, 1 - material, 2 - color, 3 - shortDesc, 4 - longDesc
 
@@ -43,7 +51,8 @@ public class CheckDifficulties implements CommandExecutor {
             diffItem.setItemMeta(diffMeta);
             // Ustawianie go na odpowiednim polu
             hardcoreMenu.setItem(firstGap.get(), diffItem);
-            if (firstGap.get() == 16 || firstGap.get() == 24 || firstGap.get() == 40) firstGap.addAndGet(4);
+            if (firstGap.get() == 16 || firstGap.get() == 24 || firstGap.get() == 34) firstGap.addAndGet(4);
+            else if (firstGap.get() > 43) firstGap.addAndGet(0);
             else firstGap.addAndGet(2);
         });
 
