@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.HashMap;
 
-public class PlayerMove implements Listener {
+public class DangerousDarkness implements Listener {
 
     DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.YELLOW, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
 

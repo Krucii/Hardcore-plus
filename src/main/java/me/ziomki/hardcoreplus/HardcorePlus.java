@@ -1,14 +1,12 @@
 package me.ziomki.hardcoreplus;
 
-import me.ziomki.hardcoreplus.Commands.ChanceListTest;
-import me.ziomki.hardcoreplus.Commands.PercentageTest;
+import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
+import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
 import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 import static me.ziomki.hardcoreplus.Schedulers.DarknessScheduler.darkness;
@@ -25,17 +23,17 @@ public class HardcorePlus extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        addListener(new MobFocus());
-        addListener(new PlayerDeadItemsGone());
-        addListener(new PlayerFall());
-        addListener(new BlockBreak());
-        addListener(new FoodLevelChange());
-        addListener(new MobSpawn());
-        addListener(new PlayerMove());
-        addListener(new Lightning());
+        addListener(new VeryFastMonsters());
+        addListener(new DeathEraseItems());
+        addListener(new BrokenLegEvent());
+        addListener(new FastBreakingTools());
+        addListener(new FoodLevelDowngrade());
+        addListener(new SpawnPoweredCreepers());
+        addListener(new DangerousDarkness());
+        addListener(new EpicLightningTarget());
 
-        addCommand("chance", new PercentageTest());
-        addCommand("list", new ChanceListTest());
+        addCommand("chance", new CheckPercentageTest());
+        addCommand("list", new CheckDifficulties());
 
         darkness();
     }

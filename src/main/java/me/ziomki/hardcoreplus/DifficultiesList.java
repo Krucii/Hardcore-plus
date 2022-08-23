@@ -11,31 +11,6 @@ public class DifficultiesList {
     private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
     private static Integer ID = 1;
     private final String shortDesc, longDesc;
-
-    public static Integer getID() {
-        return ID;
-    }
-
-    public String getShortDesc() {
-        return shortDesc;
-    }
-
-    public String getLongDesc() {
-        return longDesc;
-    }
-
-    public Double getChance() {
-        return chance;
-    }
-
-    public Material getItem() {
-        return item;
-    }
-
-    public ChatColor getColor() {
-        return color;
-    }
-
     private final Double chance;
     private final Material item;
     private final ChatColor color;
@@ -61,5 +36,9 @@ public class DifficultiesList {
         parameters.add(shortDesc);
         parameters.add(longDesc);
         getDifficultiesList().put(ID++, parameters);
+    }
+
+    public Double getChance() {
+        return chance;
     }
 }

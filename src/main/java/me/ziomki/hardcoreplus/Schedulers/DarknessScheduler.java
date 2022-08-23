@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
 
 import java.util.Objects;
 
-import static me.ziomki.hardcoreplus.Listeners.PlayerMove.lightDamage;
+import static me.ziomki.hardcoreplus.Listeners.DangerousDarkness.lightDamage;
 
 public class DarknessScheduler {
 
