@@ -1,5 +1,8 @@
 package me.ziomki.hardcoreplus.Listeners;
 
+import me.ziomki.hardcoreplus.DifficultiesList;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class FoodLevelChange implements Listener {
+
+    DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.DARK_GRAY, "Niedożywienie", "Większy spadek poziomu głodu na pustyni.");
 
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {

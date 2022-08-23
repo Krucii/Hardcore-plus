@@ -1,5 +1,8 @@
 package me.ziomki.hardcoreplus.Listeners;
 
+import me.ziomki.hardcoreplus.DifficultiesList;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,6 +11,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class MobFocus implements Listener {
+
+    DifficultiesList adding = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące cię potwory są szybsze.");
 
     @EventHandler
     public void onAttack(EntityTargetEvent e) {
