@@ -1,11 +1,14 @@
 package me.ziomki.hardcoreplus.Listeners;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -17,6 +20,7 @@ public class VeryFastMonsters implements Listener {
     @EventHandler
     public void onAttack(EntityTargetEvent e) {
         if (!(e.getEntity() instanceof Monster entity)) return;
+        if ((e.getEntity() instanceof Creeper)) return;
         PotionEffect drug = new PotionEffect(PotionEffectType.SPEED, 20*20, 2);
         entity.addPotionEffect(drug);
     }
