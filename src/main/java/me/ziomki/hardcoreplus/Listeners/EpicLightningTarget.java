@@ -1,6 +1,6 @@
 package me.ziomki.hardcoreplus.Listeners;
 
-import me.ziomki.hardcoreplus.DifficultiesList;
+import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

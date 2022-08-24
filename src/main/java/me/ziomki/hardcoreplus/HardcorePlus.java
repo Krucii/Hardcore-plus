@@ -2,7 +2,7 @@ package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
 import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
-import me.ziomki.hardcoreplus.Events.EssentialsToGUI;
+import me.ziomki.hardcoreplus.Events.GUIClicking;
 import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -36,7 +36,7 @@ public class HardcorePlus extends JavaPlugin {
         addCommand("chance", new CheckPercentageTest());
         addCommand("utrudnienia", new CheckDifficulties());
 
-        addListener(new EssentialsToGUI());
+        addListener(new GUIClicking());
 
         darkness();
     }

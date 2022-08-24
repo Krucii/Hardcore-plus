@@ -1,6 +1,6 @@
 package me.ziomki.hardcoreplus.Listeners;
 
-import me.ziomki.hardcoreplus.DifficultiesList;
+import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
 import net.md_5.bungee.api.ChatColor;

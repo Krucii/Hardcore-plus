@@ -1,6 +1,6 @@
 package me.ziomki.hardcoreplus.Listeners;
 
-import me.ziomki.hardcoreplus.DifficultiesList;
+import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
