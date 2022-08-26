@@ -9,4 +9,4 @@ commands:
     usage: /<command>
   utrudnienia:
     description: Lista utrudnień trybu hardcore
-    usage: /<command>
+    usage: /<command> [procentowe|permamentne]
