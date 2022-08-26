@@ -102,7 +102,8 @@ public class GUICreator {
 
     // Zwraca typ strony - 3 linikę lore (potencjalnie do przebudowy w przyszłości)
     public String getPageType(Inventory inv) {
-        return Objects.requireNonNull(Objects.requireNonNull(Objects.requireNonNull(inv.getItem(40)).getItemMeta()).getLore()).get(2);
+        if (!inv.getItem(40).getItemMeta().hasLore()) return "";
+        else return inv.getItem(40).getItemMeta().getLore().get(2);
     }
 
     // Układa lore w ładny sposób (opis + szansa)
