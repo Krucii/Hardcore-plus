@@ -12,18 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class DifficultiesList {
+public record DifficultiesList(Double chance, Material item, ChatColor color,
+                               String shortDesc, String longDesc) {
     private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
     private static Integer ID_1 = 1;
     private static final HashMap<Integer, List<Object>> difficultiesChanceList = new HashMap<>();
     private static Integer ID_2 = 1;
     private static final HashMap<Integer, List<Object>> difficultiesPermamentList = new HashMap<>();
     private static Integer ID_3 = 1;
-    private final String shortDesc, longDesc;
-    private final Double chance;
-    private final Material item;
-    private final ChatColor color;
-
 
     public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
         this.chance = chance;
@@ -31,8 +27,6 @@ public class DifficultiesList {
         this.color = color;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
-        addEntry();
-        addEntry();
         addEntry();
     }
 
@@ -51,9 +45,11 @@ public class DifficultiesList {
     public static HashMap<Integer, List<Object>> getDifficultiesList() {
         return difficultiesList;
     }
+
     public static HashMap<Integer, List<Object>> getDifficultiesChanceList() {
         return difficultiesChanceList;
     }
+
     public static HashMap<Integer, List<Object>> getDifficultiesPermamentList() {
         return difficultiesPermamentList;
     }
@@ -86,7 +82,8 @@ public class DifficultiesList {
                 longDesc = (String) lock.get(4);
         // Tworzenie ikonki do menu
         ItemStack diffItem = new ItemStack(material, 1);
-        ItemMeta diffMeta = diffItem.getItemMeta(); assert diffMeta != null;
+        ItemMeta diffMeta = diffItem.getItemMeta();
+        assert diffMeta != null;
         diffMeta.setDisplayName(color + shortDesc);
         diffMeta.setLore(GUICreator.fancyLore(longDesc, chance));
         diffMeta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);

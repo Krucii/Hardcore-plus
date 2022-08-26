@@ -15,9 +15,7 @@ import java.util.Objects;
 public class GUICreator {
 
     private final Player invOwner;
-
-    private int theGap = 10;
-
+    private int itemSlot = 10;
     private final Inventory GUI;
 
     public GUICreator(Player invOwner, int invSize, String invName) {
@@ -25,6 +23,7 @@ public class GUICreator {
         GUI = Bukkit.createInventory(invOwner, invSize, invName);
     }
 
+    // Wypełnia pustą przestrzeń szarym szkłem
     public void fillGlass() {
         ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta voidGlassMeta = voidGlass.getItemMeta();
@@ -35,24 +34,35 @@ public class GUICreator {
             GUI.setItem(i, voidGlass);
     }
 
+    // Dodaje przedmiot, ikonę do GUI
     public void addToGUI(ItemStack icon) {
-        GUI.setItem(theGap, icon);
+        GUI.setItem(itemSlot, icon);
 
-        if (theGap == 16 || theGap == 24) theGap += 4;
-        else theGap += 2;
+        if (itemSlot == 16 || itemSlot == 24) itemSlot += 4;
+        else itemSlot += 2;
     }
 
-    public void addPageInfo(int pageNumber, List<String> lore) {
+    // Dodaje informację o numerze strony
+    public void addPageInfo(int pageNumber) {
         ItemStack page = new ItemStack(Material.PAPER);
         ItemMeta pageMeta = page.getItemMeta();
         assert pageMeta != null;
         pageMeta.setDisplayName(ChatColor.WHITE + "Strona " + pageNumber);
-        pageMeta.setLore(lore);
         page.setItemMeta(pageMeta);
 
         GUI.setItem(40, page);
     }
 
+    // Dodaje informację o numerze strony + lore
+    public void addPageInfo(int pageNumber, List<String> lore) {
+        addPageInfo(pageNumber);
+        ItemStack page = GUI.getItem(40);
+        ItemMeta pageMeta = page.getItemMeta();
+        pageMeta.setLore(lore);
+        page.setItemMeta(pageMeta);
+    }
+
+    // Dodaje przycisk - następna strona
     public void addNextPage() {
         ItemStack nextPage = new ItemStack(Material.ARROW);
         ItemMeta nextPageMeta = nextPage.getItemMeta();
@@ -63,6 +73,7 @@ public class GUICreator {
         GUI.setItem(44, nextPage);
     }
 
+    // Dodaje przycisk - poprzednia strona
     public void addPreviousPage() {
         ItemStack previousPage = new ItemStack(Material.ARROW);
         ItemMeta previousPageMeta = previousPage.getItemMeta();
@@ -73,24 +84,29 @@ public class GUICreator {
         GUI.setItem(36, previousPage);
     }
 
+    // Otwiera GUI
     public void displayInventory() {
         invOwner.openInventory(GUI);
     }
 
+    // Zwraca przedmiot z GUI
     public ItemStack getIcon(int slot) {
         return GUI.getItem(slot);
     }
 
+    // Zwraca numer strony
     public int getPageNumber(Inventory inv) {
         String pageInfo = Objects.requireNonNull(Objects.requireNonNull(inv.getItem(40)).getItemMeta()).getDisplayName().replaceAll("[^0-9]", "");
         return Integer.parseInt(pageInfo);
     }
 
+    // Zwraca typ strony - 3 linikę lore (potencjalnie do przebudowy w przyszłości)
     public String getPageType(Inventory inv) {
-        return Objects.requireNonNull(Objects.requireNonNull(Objects.requireNonNull(inv.getItem(40)).getItemMeta()).getLore()).get(2);
+        if (!inv.getItem(40).getItemMeta().hasLore()) return "";
+        else return inv.getItem(40).getItemMeta().getLore().get(2);
     }
 
-
+    // Układa lore w ładny sposób (opis + szansa)
     public static List<String> fancyLore(String lore, Double chance) {
         StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
         int i = 0;
@@ -103,6 +119,7 @@ public class GUICreator {
         return Arrays.asList(sb.toString().split("\n"));
     }
 
+    // Układa lore w ładny sposób (opis)
     public static List<String> fancyLore(String lore) {
         StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
         int i = 0;
