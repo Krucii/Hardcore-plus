@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
+import java.util.Objects;
+
 public class EpicLightningTarget implements Listener {
 
     DifficultiesList adding = new DifficultiesList(5.0, Material.LIGHTNING_ROD, ChatColor.RED, "Wkurzony Zeus", "Zwiększona szansa na zostanie trafionym piorunem.");
@@ -22,7 +24,7 @@ public class EpicLightningTarget implements Listener {
             World w = e.getWorld();
             e.setCancelled(true);
             Player randomPlayer = Bukkit.getOnlinePlayers().stream().findAny().get(); //czy na pewno daje randomowego playera?
-            w.strikeLightning(Bukkit.getPlayer(randomPlayer.getUniqueId()).getLocation());
+            w.strikeLightning(Objects.requireNonNull(Bukkit.getPlayer(randomPlayer.getUniqueId())).getLocation());
         }
     }
 }
