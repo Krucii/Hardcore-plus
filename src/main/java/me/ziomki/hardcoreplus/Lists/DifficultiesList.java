@@ -32,8 +32,6 @@ public class DifficultiesList {
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         addEntry();
-        addEntry();
-        addEntry();
     }
 
     private void addEntry() {
