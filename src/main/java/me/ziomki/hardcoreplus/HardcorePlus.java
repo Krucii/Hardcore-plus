@@ -26,7 +26,7 @@ public class HardcorePlus extends JavaPlugin {
 
         addListener(new VeryFastMonsters());
         addListener(new DeathEraseItems());
-        addListener(new BrokenLegEvent());
+        addListener(new TwistedAnkleEvent());
         addListener(new FastBreakingTools());
         addListener(new FoodLevelDowngrade());
         addListener(new SpawnPoweredCreepers());

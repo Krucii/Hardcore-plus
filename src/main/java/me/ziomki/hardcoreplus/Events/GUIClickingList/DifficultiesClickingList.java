@@ -22,7 +22,7 @@ public class DifficultiesClickingList {
 
     public void difficultiesMenu() {
         GUICreator gui = new GUICreator((Player) e.getWhoClicked(), 45, ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia");
-        final String whatPageType = gui.getPageType(Objects.requireNonNull(e.getClickedInventory()));
+        final String whatPageType = gui.getPageLore(Objects.requireNonNull(e.getClickedInventory()), 40);
         String whatPageType_real;
         HashMap<Integer, List<Object>> menu;
 
