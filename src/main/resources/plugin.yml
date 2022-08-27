@@ -10,6 +10,6 @@ commands:
   wyjebka:
     description: test
     usage: /<command>
-  wtf:
-    description: test
-    usage: /<command>
+  utrudnienia:
+    description: Lista utrudnień trybu hardcore
+    usage: /<command> [procentowe|permamentne]

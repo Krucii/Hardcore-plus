@@ -1,8 +1,9 @@
 package me.ziomki.hardcoreplus;
 
-import me.ziomki.hardcoreplus.Commands.PercentageTest;
-import me.ziomki.hardcoreplus.Commands.Wtf;
 import me.ziomki.hardcoreplus.Commands.Wyjebka;
+import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
+import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
+import me.ziomki.hardcoreplus.Events.GUIClicking;
 import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -24,19 +25,22 @@ public class HardcorePlus extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        addListener(new MobFocus());
-        addListener(new PlayerDeadItemsGone());
-        addListener(new PlayerFall());
-        addListener(new BlockBreak());
-        addListener(new FoodLevelChange());
-        addListener(new MobSpawn());
-        addListener(new PlayerMove());
-        addListener(new Lightning());
+        addListener(new VeryFastMonsters());
+        addListener(new DeathEraseItems());
+        addListener(new TwistedAnkleEvent());
+        addListener(new FastBreakingTools());
+        addListener(new FoodLevelDowngrade());
+        addListener(new SpawnPoweredCreepers());
+        addListener(new DangerousDarkness());
+        addListener(new EpicLightningTarget());
         addListener(new WyjebkaE());
 
-        addCommand("chance", new PercentageTest());
-        addCommand("wyjebka", new Wyjebka());
-        addCommand("wtf", new Wtf());
+        addCommand("chance", new CheckPercentageTest());
+        addCommand("utrudnienia", new CheckDifficulties());
+        
+        addCommand("wyjebka", new Wyjebka()); //test command
+
+        addListener(new GUIClicking());
 
         darkness();
     }
