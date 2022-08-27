@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus.Listeners;
 
+import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,10 @@ public class PlayerMove implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         if(e.getTo().distanceSquared(e.getFrom()) == 0) return;
+
+        if (Wyjebka.wyjebany.contains(e.getPlayer())) {
+            e.setCancelled(true);
+        }
 
         int light = e.getPlayer().getLocation().getBlock().getLightLevel();
 

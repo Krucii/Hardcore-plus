@@ -1,6 +1,8 @@
 package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Commands.PercentageTest;
+import me.ziomki.hardcoreplus.Commands.Wtf;
+import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -30,8 +32,11 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new MobSpawn());
         addListener(new PlayerMove());
         addListener(new Lightning());
+        addListener(new WyjebkaE());
 
         addCommand("chance", new PercentageTest());
+        addCommand("wyjebka", new Wyjebka());
+        addCommand("wtf", new Wtf());
 
         darkness();
     }
