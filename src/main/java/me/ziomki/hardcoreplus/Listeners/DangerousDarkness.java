@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus.Listeners;
 
+import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,6 +20,10 @@ public class DangerousDarkness implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         if(e.getTo().distanceSquared(e.getFrom()) == 0) return;
+
+        if (Wyjebka.wyjebany.contains(e.getPlayer())) {
+            e.setCancelled(true);
+        }
 
         int light = e.getPlayer().getLocation().getBlock().getLightLevel();
 

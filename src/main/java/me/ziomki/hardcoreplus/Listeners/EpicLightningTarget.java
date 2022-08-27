@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.LightningStrikeEvent;
-
+import java.util.Random;
 import java.util.Objects;
 
 public class EpicLightningTarget implements Listener {
@@ -23,8 +23,8 @@ public class EpicLightningTarget implements Listener {
         if (ChanceCalculator.getChance(adding.getChance())) {
             World w = e.getWorld();
             e.setCancelled(true);
-            Player randomPlayer = Bukkit.getOnlinePlayers().stream().findAny().get(); //czy na pewno daje randomowego playera?
-            w.strikeLightning(Objects.requireNonNull(Bukkit.getPlayer(randomPlayer.getUniqueId())).getLocation());
+            Player randomPlayer = (Player) Bukkit.getOnlinePlayers().toArray()[new Random().nextInt(Bukkit.getOnlinePlayers().size())];
+            w.strikeLightning(Bukkit.getPlayer(randomPlayer.getUniqueId()).getLocation());
         }
     }
 }

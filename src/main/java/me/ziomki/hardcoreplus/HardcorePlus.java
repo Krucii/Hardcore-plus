@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus;
 
+import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
 import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
 import me.ziomki.hardcoreplus.Events.GUIClicking;
@@ -32,9 +33,12 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new SpawnPoweredCreepers());
         addListener(new DangerousDarkness());
         addListener(new EpicLightningTarget());
+        addListener(new WyjebkaE());
 
         addCommand("chance", new CheckPercentageTest());
         addCommand("utrudnienia", new CheckDifficulties());
+        
+        addCommand("wyjebka", new Wyjebka()); //test command
 
         addListener(new GUIClicking());
 
