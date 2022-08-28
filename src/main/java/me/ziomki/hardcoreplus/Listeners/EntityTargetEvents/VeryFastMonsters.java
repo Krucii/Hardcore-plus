@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.EntityTargetEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import org.bukkit.ChatColor;

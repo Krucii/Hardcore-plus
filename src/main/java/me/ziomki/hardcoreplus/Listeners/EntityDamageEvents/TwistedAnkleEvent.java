@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.EntityDamageEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;

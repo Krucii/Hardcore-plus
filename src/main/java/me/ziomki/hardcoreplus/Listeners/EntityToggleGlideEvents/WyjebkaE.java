@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.EntityToggleGlideEvents;
 
 import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import org.bukkit.entity.Player;

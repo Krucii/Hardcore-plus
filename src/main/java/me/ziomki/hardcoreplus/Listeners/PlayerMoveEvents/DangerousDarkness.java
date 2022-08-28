@@ -1,8 +1,7 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.PlayerMoveEvents;
 
 import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

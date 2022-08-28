@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.LightningStrikeEvents;
 
 import me.ziomki.hardcoreplus.Helpers.RandomPlayer;
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;

@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.BlockBreakEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
@@ -12,12 +12,11 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 
-public class FastBreakingTools implements Listener {
+public class FastBreakingTools {
 
-    DifficultiesList adding = new DifficultiesList(30.0, Material.IRON_AXE, ChatColor.GRAY, "Liche narzędzia", "Narzędzia zużywają się szybciej.");
+    static DifficultiesList adding = new DifficultiesList(30.0, Material.IRON_AXE, ChatColor.GRAY, "Liche narzędzia", "Narzędzia zużywają się szybciej.");
 
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent e) {
+    public static void fastBreaking(BlockBreakEvent e) {
         Player p = e.getPlayer();
         ItemStack itemInHand = p.getInventory().getItemInMainHand();
         if (EnchantmentTarget.TOOL.includes(itemInHand)) {// sprawdzam, czy item w rece to narzedzie
