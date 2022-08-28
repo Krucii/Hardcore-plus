@@ -32,7 +32,7 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new FoodLevelDowngrade());
         addListener(new SpawnPoweredCreepers());
         addListener(new DangerousDarkness());
-        addListener(new EpicLightningTarget());
+        addListener(new HugeLightningTarget());
         addListener(new WyjebkaE());
 
         addCommand("chance", new CheckPercentageTest());
