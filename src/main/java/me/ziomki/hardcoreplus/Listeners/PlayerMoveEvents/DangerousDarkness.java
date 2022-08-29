@@ -1,8 +1,7 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.PlayerMoveEvents;
 
 import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,12 +13,12 @@ import java.util.HashMap;
 
 public class DangerousDarkness implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.YELLOW, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
+    static DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.YELLOW, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
 
     public static HashMap<Player, Boolean> lightDamage = new HashMap<>();
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent e) {
+    public static void onMove(PlayerMoveEvent e) {
         if(e.getTo().distanceSquared(e.getFrom()) == 0) return;
 
         if (Wyjebka.wyjebany.contains(e.getPlayer())) {

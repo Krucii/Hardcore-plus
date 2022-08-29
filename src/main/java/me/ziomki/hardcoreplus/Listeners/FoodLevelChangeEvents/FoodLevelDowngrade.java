@@ -1,20 +1,18 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.FoodLevelChangeEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class FoodLevelDowngrade implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.GRAY, "Susza", "Zwiększony spadek poziomu nasycenia na pustyni.");
+    static DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.GRAY, "Susza", "Zwiększony spadek poziomu nasycenia na pustyni.");
 
-    @EventHandler
-    public void onFoodLevelChange(FoodLevelChangeEvent e) {
+    public static void onDrought(FoodLevelChangeEvent e) {
         if (!(e.getEntity() instanceof Player p)) return;
 
         for (Biomy b : Biomy.values())

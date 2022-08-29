@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.PlayerDeathEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
@@ -11,10 +11,10 @@ import org.bukkit.inventory.ItemStack;
 
 public class DeathEraseItems implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci połowa przedmiotów znika.");
+    static DifficultiesList adding = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci połowa przedmiotów znika.");
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent e) {
+    public static void onDeath(PlayerDeathEvent e) {
         for (int i = 0; i < e.getDrops().size(); i++) {
             if (ChanceCalculator.getChance(50))
                 e.getDrops().set(i, new ItemStack(Material.AIR));

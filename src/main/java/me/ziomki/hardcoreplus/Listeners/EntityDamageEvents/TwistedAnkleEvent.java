@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Listeners;
+package me.ziomki.hardcoreplus.Listeners.EntityDamageEvents;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
@@ -12,12 +12,11 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class TwistedAnkleEvent implements Listener {
+public class TwistedAnkleEvent {
 
-    DifficultiesList adding = new DifficultiesList(5.0, Material.DIRT, org.bukkit.ChatColor.GREEN, "Łamaga", "Pojawia się rosnąca wraz z wysokością szansa na skręcenie kostki podczas upadku.");
+    static DifficultiesList adding = new DifficultiesList(5.0, Material.DIRT, org.bukkit.ChatColor.GREEN, "Łamaga", "Pojawia się rosnąca wraz z wysokością szansa na skręcenie kostki podczas upadku.");
 
-    @EventHandler
-    public void onPlayerFall(EntityDamageEvent e) {
+    public static void onPlayerFall(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
             if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 float fallDistance = p.getFallDistance();
@@ -41,7 +40,7 @@ public class TwistedAnkleEvent implements Listener {
         }
     }
 
-    public void boneBreak(Player p, int dur, int ampl) {
+    public static void boneBreak(Player p, int dur, int ampl) {
         p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, dur, ampl));
         ActionBarMessage.sendActionBarMessage(p, ChatColor.RED + "Złamałeś nogę");
     }
