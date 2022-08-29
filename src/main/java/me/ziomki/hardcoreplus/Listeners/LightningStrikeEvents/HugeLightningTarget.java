@@ -12,13 +12,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
-public class HugeLightningTarget implements Listener {
+public class HugeLightningTarget {
 
-    static DifficultiesList adding = new DifficultiesList(5.0, Material.LIGHTNING_ROD, ChatColor.RED, "Wkurzony Zeus", "Zwiększona szansa na zostanie trafionym piorunem.");
-
-    public static void onLightning(LightningStrikeEvent e) {
+    public HugeLightningTarget(LightningStrikeEvent e, DifficultiesList icon_parameters) {
         if (e.getCause() == LightningStrikeEvent.Cause.CUSTOM) return;
-        if (ChanceCalculator.getChance(adding.getChance())) {
+        if (ChanceCalculator.getChance(icon_parameters.getChance())) {
             e.setCancelled(true);
             World w = e.getWorld();
             Player randomPlayer = RandomPlayer.getPlayer();

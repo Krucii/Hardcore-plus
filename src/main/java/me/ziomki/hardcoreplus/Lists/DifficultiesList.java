@@ -18,7 +18,7 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
     private static Integer ID_1 = 1;
     private static final HashMap<Integer, List<Object>> difficultiesChanceList = new HashMap<>();
     private static Integer ID_2 = 1;
-    private static final HashMap<Integer, List<Object>> difficultiesPermamentList = new HashMap<>();
+    private static final HashMap<Integer, List<Object>> difficultiesPermanentList = new HashMap<>();
     private static Integer ID_3 = 1;
 
     public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
@@ -38,7 +38,7 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         parameters.add(shortDesc);
         parameters.add(longDesc);
         if (chance != 100.0) getDifficultiesChanceList().put(ID_2++, parameters);
-        else getDifficultiesPermamentList().put(ID_3++, parameters);
+        else getDifficultiesPermanentList().put(ID_3++, parameters);
         getDifficultiesList().put(ID_1++, parameters);
     }
 
@@ -50,8 +50,8 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         return difficultiesChanceList;
     }
 
-    public static HashMap<Integer, List<Object>> getDifficultiesPermamentList() {
-        return difficultiesPermamentList;
+    public static HashMap<Integer, List<Object>> getDifficultiesPermanentList() {
+        return difficultiesPermanentList;
     }
 
     public Double getChance() {
@@ -61,7 +61,7 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
     public static ItemStack createDiffIcon(int key, String whatList) {
 
         List<Object> lock = DifficultiesList.getDifficultiesList().get(key);
-        if (Objects.equals(whatList, "permament")) lock = DifficultiesList.getDifficultiesPermamentList().get(key);
+        if (Objects.equals(whatList, "permanent")) lock = DifficultiesList.getDifficultiesPermanentList().get(key);
         else if (Objects.equals(whatList, "chance")) lock = DifficultiesList.getDifficultiesChanceList().get(key);
 
 

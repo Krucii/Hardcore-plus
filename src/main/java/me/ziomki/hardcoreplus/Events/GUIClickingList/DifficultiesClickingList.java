@@ -34,10 +34,10 @@ public class DifficultiesClickingList {
             whatPageType_real = "chance";
             lore.add(ChatColor.GREEN + "utrudnienia procentowe");
         }
-        else if (Objects.equals(whatPageType, ChatColor.GREEN + "utrudnienia permamentne")) {
-            menu = DifficultiesList.getDifficultiesPermamentList();
-            whatPageType_real = "permament";
-            lore.add(ChatColor.GREEN + "utrudnienia permamentne");
+        else if (Objects.equals(whatPageType, ChatColor.GREEN + "utrudnienia permanentne")) {
+            menu = DifficultiesList.getDifficultiesPermanentList();
+            whatPageType_real = "permanent";
+            lore.add(ChatColor.GREEN + "utrudnienia permanentne");
         }
         else {
             menu = DifficultiesList.getDifficultiesList();

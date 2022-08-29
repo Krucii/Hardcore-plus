@@ -9,11 +9,9 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public class SpawnPoweredCreepers {
 
-    static DifficultiesList adding = new DifficultiesList(5.0, Material.CREEPER_HEAD, ChatColor.DARK_GREEN, "Bombowa imprezka", "Naelektryzowane creepery nie są już tak rzadkim widokiem.");
-
-    public static void onCreeperSpawn(CreatureSpawnEvent e) {
+    public SpawnPoweredCreepers(CreatureSpawnEvent e, DifficultiesList icon_parameters) {
         if (e.getEntity() instanceof Creeper c) {
-            if (ChanceCalculator.getChance(adding.getChance()))
+            if (ChanceCalculator.getChance(icon_parameters.getChance()))
                 c.setPowered(true);
         }
     }

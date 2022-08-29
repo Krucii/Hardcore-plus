@@ -10,11 +10,9 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class VeryFastMonsters implements Listener {
+public class VeryFastMonsters {
 
-    static DifficultiesList adding = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące graczy potwory są szybsze.");
-
-    public static void onMonsterAttack(EntityTargetEvent e) {
+    public VeryFastMonsters(EntityTargetEvent e, DifficultiesList icon_parameters) {
         if (!(e.getEntity() instanceof Monster entity)) return;
         if ((e.getEntity() instanceof Creeper)) return;
         PotionEffect drug = new PotionEffect(PotionEffectType.SPEED, 20*20, 2);

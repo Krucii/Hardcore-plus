@@ -11,14 +11,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.HashMap;
 
-public class DangerousDarkness implements Listener {
-
-    static DifficultiesList adding = new DifficultiesList(100.0, Material.TORCH, ChatColor.YELLOW, "Egipskie ciemności", "Zbyt mała ilość światła powoduje otrzymywanie obrażeń.");
+public class DangerousDarkness {
 
     public static HashMap<Player, Boolean> lightDamage = new HashMap<>();
 
-    @EventHandler
-    public static void onMove(PlayerMoveEvent e) {
+    public DangerousDarkness (PlayerMoveEvent e, DifficultiesList icon_parameters) {
         if(e.getTo().distanceSquared(e.getFrom()) == 0) return;
 
         if (Wyjebka.wyjebany.contains(e.getPlayer())) {

@@ -14,26 +14,24 @@ import org.bukkit.potion.PotionEffectType;
 
 public class TwistedAnkleEvent {
 
-    static DifficultiesList adding = new DifficultiesList(5.0, Material.DIRT, org.bukkit.ChatColor.GREEN, "Łamaga", "Pojawia się rosnąca wraz z wysokością szansa na skręcenie kostki podczas upadku.");
-
-    public static void onPlayerFall(EntityDamageEvent e) {
+    public TwistedAnkleEvent(EntityDamageEvent e, DifficultiesList icon_parameters) {
         if (e.getEntity() instanceof Player p) {
             if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 float fallDistance = p.getFallDistance();
                 if (fallDistance < 5) {
-                    if (ChanceCalculator.getChance(adding.getChance()))
+                    if (ChanceCalculator.getChance(icon_parameters.getChance()))
                         boneBreak(p, 40*20, 2);
                 }
                 else if (fallDistance < 8 && fallDistance > 5) {
-                    if (ChanceCalculator.getChance(adding.getChance() * 4))
+                    if (ChanceCalculator.getChance(icon_parameters.getChance() * 4))
                         boneBreak(p, 80*20, 2);
                 }
                 else if (fallDistance < 12 && fallDistance > 8) {
-                    if (ChanceCalculator.getChance(adding.getChance() * 8))
+                    if (ChanceCalculator.getChance(icon_parameters.getChance() * 8))
                         boneBreak(p, 160*20, 2);
                 }
                 else {
-                    if (ChanceCalculator.getChance(adding.getChance() * 16))
+                    if (ChanceCalculator.getChance(icon_parameters.getChance() * 16))
                         boneBreak(p, 320*20, 3);
                 }
             }
