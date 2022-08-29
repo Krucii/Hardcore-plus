@@ -2,6 +2,7 @@ package me.ziomki.hardcoreplus.Commands;
 
 import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,10 +33,10 @@ public class CheckDifficulties implements CommandExecutor {
             size = DifficultiesList.getDifficultiesChanceList().size();
             lore.add(ChatColor.GREEN + "utrudnienia procentowe");
         }
-        else if (strings.length > 0 && Objects.equals(strings[0], "permamentne")) {
-            what = "permament";
-            size = DifficultiesList.getDifficultiesPermamentList().size();
-            lore.add(ChatColor.GREEN + "utrudnienia permamentne");
+        else if (strings.length > 0 && Objects.equals(strings[0], "permanentne")) {
+            what = "permanent";
+            size = DifficultiesList.getDifficultiesPermanentList().size();
+            lore.add(ChatColor.GREEN + "utrudnienia permanentne");
         }
         else lore.add(ChatColor.GREEN + "wszystkie utrudnienia");
 

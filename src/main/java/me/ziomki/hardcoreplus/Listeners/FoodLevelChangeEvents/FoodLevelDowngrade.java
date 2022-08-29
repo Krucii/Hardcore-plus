@@ -10,9 +10,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class FoodLevelDowngrade implements Listener {
 
-    static DifficultiesList adding = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.GRAY, "Susza", "Zwiększony spadek poziomu nasycenia na pustyni.");
-
-    public static void onDrought(FoodLevelChangeEvent e) {
+    public FoodLevelDowngrade(FoodLevelChangeEvent e, DifficultiesList icon_parameters) {
         if (!(e.getEntity() instanceof Player p)) return;
 
         for (Biomy b : Biomy.values())

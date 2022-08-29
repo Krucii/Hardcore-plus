@@ -114,7 +114,7 @@ public class GUICreator {
         while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
             sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
 
-        if (chance == 100.0) sb.append("\n" + ChatColor.GOLD + "Efekt permamentny");
+        if (chance == 100.0) sb.append("\n" + ChatColor.GOLD + "Efekt permanentny");
         else sb.append("\n" + ChatColor.YELLOW + "Szansa wystąpienia: " + ChatColor.GOLD).append(chance).append("0%");
         return Arrays.asList(sb.toString().split("\n"));
     }

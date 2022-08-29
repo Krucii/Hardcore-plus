@@ -4,9 +4,7 @@ import me.ziomki.hardcoreplus.Commands.Wyjebka;
 import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
 import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
 import me.ziomki.hardcoreplus.Events.GUIClicking;
-import me.ziomki.hardcoreplus.Listeners.BlockBreakEvent_Executor;
-import me.ziomki.hardcoreplus.Listeners.CreatureSpawnEvent_Executor;
-import me.ziomki.hardcoreplus.Listeners.EntityDamageEvent_Executor;
+import me.ziomki.hardcoreplus.Listeners.*;
 import me.ziomki.hardcoreplus.Listeners.EntityTargetEvents.VeryFastMonsters;
 import me.ziomki.hardcoreplus.Listeners.EntityToggleGlideEvents.RandomFallingDown;
 import me.ziomki.hardcoreplus.Listeners.FoodLevelChangeEvents.FoodLevelDowngrade;
@@ -33,15 +31,15 @@ public class HardcorePlus extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        addListener(new VeryFastMonsters());
-        addListener(new DeathEraseItems());
-        addListener(new EntityDamageEvent_Executor());
         addListener(new BlockBreakEvent_Executor());
-        addListener(new FoodLevelDowngrade());
         addListener(new CreatureSpawnEvent_Executor());
-        addListener(new DangerousDarkness());
-        addListener(new HugeLightningTarget());
-        addListener(new RandomFallingDown());
+        addListener(new EntityDamageEvent_Executor());
+        addListener(new EntityTargetEvent_Executor());
+        addListener(new EntityToggleGlideEvent_Executor());
+        addListener(new FoodLevelChangeEvent_Executor());
+        addListener(new LightningStrikeEvent_Executor());
+        addListener(new PlayerDeathEvent_Executor());
+        addListener(new PlayerMoveEvent_Executor());
 
         addCommand("chance", new CheckPercentageTest());
         addCommand("utrudnienia", new CheckDifficulties());

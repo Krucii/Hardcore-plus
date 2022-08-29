@@ -8,12 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 
-public class RandomFallingDown implements Listener {
+public class RandomFallingDown {
 
-    // Do wystylowania
-    static DifficultiesList adding = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące graczy potwory są szybsze.");
-
-    public static void onFall(EntityToggleGlideEvent e) {
+    public RandomFallingDown(EntityToggleGlideEvent e, DifficultiesList icon_parameters) {
         if (e.getEntity() instanceof Player p) {
             if (Wyjebka.wyjebany.contains(p))
                 if (!e.isGliding())

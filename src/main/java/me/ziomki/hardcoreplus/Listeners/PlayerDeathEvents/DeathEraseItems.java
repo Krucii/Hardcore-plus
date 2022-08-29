@@ -9,12 +9,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class DeathEraseItems implements Listener {
+public class DeathEraseItems {
 
-    static DifficultiesList adding = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci połowa przedmiotów znika.");
-
-    @EventHandler
-    public static void onDeath(PlayerDeathEvent e) {
+    public DeathEraseItems(PlayerDeathEvent e, DifficultiesList icon_parameters) {
         for (int i = 0; i < e.getDrops().size(); i++) {
             if (ChanceCalculator.getChance(50))
                 e.getDrops().set(i, new ItemStack(Material.AIR));
