@@ -14,10 +14,9 @@ import org.bukkit.event.weather.LightningStrikeEvent;
 
 public class HugeLightningTarget implements Listener {
 
-    DifficultiesList adding = new DifficultiesList(5.0, Material.LIGHTNING_ROD, ChatColor.RED, "Wkurzony Zeus", "Zwiększona szansa na zostanie trafionym piorunem.");
+    static DifficultiesList adding = new DifficultiesList(5.0, Material.LIGHTNING_ROD, ChatColor.RED, "Wkurzony Zeus", "Zwiększona szansa na zostanie trafionym piorunem.");
 
-    @EventHandler
-    public void onLightning(LightningStrikeEvent e) {
+    public static void onLightning(LightningStrikeEvent e) {
         if (e.getCause() == LightningStrikeEvent.Cause.CUSTOM) return;
         if (ChanceCalculator.getChance(adding.getChance())) {
             e.setCancelled(true);

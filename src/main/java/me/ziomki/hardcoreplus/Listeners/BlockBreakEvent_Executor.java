@@ -9,6 +9,6 @@ public class BlockBreakEvent_Executor implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
-        FastBreakingTools.fastBreaking(e);
+        FastBreakingTools.onUsingTools(e);
     }
 }
