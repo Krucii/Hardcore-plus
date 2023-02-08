@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,11 +16,11 @@ import java.util.Objects;
 public record DifficultiesList(Double chance, Material item, ChatColor color,
                                String shortDesc, String longDesc) {
     private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
-    private static Integer ID_1 = 1;
+    private static Integer main_ID = 1;
     private static final HashMap<Integer, List<Object>> difficultiesChanceList = new HashMap<>();
-    private static Integer ID_2 = 1;
+    private static Integer chance_ID = 1;
     private static final HashMap<Integer, List<Object>> difficultiesPermanentList = new HashMap<>();
-    private static Integer ID_3 = 1;
+    private static Integer permanent_ID = 1;
 
     public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
         this.chance = chance;
@@ -37,9 +38,9 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         parameters.add(color);
         parameters.add(shortDesc);
         parameters.add(longDesc);
-        if (chance != 100.0) getDifficultiesChanceList().put(ID_2++, parameters);
-        else getDifficultiesPermanentList().put(ID_3++, parameters);
-        getDifficultiesList().put(ID_1++, parameters);
+        if (chance != 100.0) getDifficultiesChanceList().put(chance_ID++, parameters);
+        else getDifficultiesPermanentList().put(permanent_ID++, parameters);
+        getDifficultiesList().put(main_ID++, parameters);
     }
 
     public static HashMap<Integer, List<Object>> getDifficultiesList() {
@@ -63,7 +64,6 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         List<Object> lock = DifficultiesList.getDifficultiesList().get(key);
         if (Objects.equals(whatList, "permanent")) lock = DifficultiesList.getDifficultiesPermanentList().get(key);
         else if (Objects.equals(whatList, "chance")) lock = DifficultiesList.getDifficultiesChanceList().get(key);
-
 
         if (lock == null) {
             ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
@@ -91,5 +91,53 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         diffItem.setItemMeta(diffMeta);
         // Ustawianie jej na odpowiednim polu
         return diffItem;
+    }
+
+    public static String getDifficultiesCategory(String[] commandArguments) {
+        if (commandArguments.length == 0) return "all";
+        else if (Objects.equals(commandArguments[0], "procentowe")) return "chance";
+        else if (Objects.equals(commandArguments[0], "permanentne")) return "permanent";
+        else return "all";
+    }
+
+    public static int getSizeOfDifficultiesList(String difficultiesCategory) {
+        if (Objects.equals(difficultiesCategory, "procentowe")) return DifficultiesList.getDifficultiesChanceList().size();
+        else if (Objects.equals(difficultiesCategory, "permanentne")) return DifficultiesList.getDifficultiesPermanentList().size();
+        else return DifficultiesList.getDifficultiesList().size();
+    }
+
+    public static List<String> makePageLore(String difficultiesCategory) {
+        List<String> pageLore = new ArrayList<>();
+        pageLore.add("");
+        pageLore.add(ChatColor.GREEN + "Ta lista zawiera");
+        if (!difficultiesCategory.equals("all")) pageLore.add(ChatColor.GREEN + "utrudnienia " + difficultiesCategory);
+        else pageLore.add(ChatColor.GREEN + difficultiesCategory + " utrudnienia");
+        return pageLore;
+    }
+
+    public static void makeIconAnSwitch(ItemStack icon) {
+        ItemMeta icon_meta = icon.getItemMeta();
+        icon_meta.setDisplayName(icon_meta.getDisplayName() + "");
+
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("difficulties_rules.yml"));
+            writer.write("Writing to a file.");
+            writer.write("\nHere is another line.");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("difficulties_rules.yml"));
+            String line;
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

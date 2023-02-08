@@ -9,13 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class CheckDifficulties implements CommandExecutor {
+public class ChangeDifficulties implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player p)) return true;
 
-        GUICreator difficultiesGUI = new GUICreator(p, 45, ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia");
+        GUICreator difficultiesGUI = new GUICreator(p, 45, ChatColor.RED + "" + ChatColor.BOLD + "Panel administracyjny");
         difficultiesGUI.fillGlass();
 
         String difficultiesCategory = DifficultiesList.getDifficultiesCategory(strings);

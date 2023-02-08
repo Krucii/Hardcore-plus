@@ -46,7 +46,6 @@ public class GUICreator {
     public void addPageInfo(int pageNumber) {
         ItemStack page = new ItemStack(Material.PAPER);
         ItemMeta pageMeta = page.getItemMeta();
-        assert pageMeta != null;
         pageMeta.setDisplayName(ChatColor.WHITE + "Strona " + pageNumber);
         page.setItemMeta(pageMeta);
 
@@ -63,7 +62,7 @@ public class GUICreator {
     }
 
     // Dodaje przycisk - następna strona
-    public void addNextPage() {
+    public void addNextPageButton() {
         ItemStack nextPage = new ItemStack(Material.ARROW);
         ItemMeta nextPageMeta = nextPage.getItemMeta();
         assert nextPageMeta != null;
@@ -74,7 +73,7 @@ public class GUICreator {
     }
 
     // Dodaje przycisk - poprzednia strona
-    public void addPreviousPage() {
+    public void addPreviousPageButton() {
         ItemStack previousPage = new ItemStack(Material.ARROW);
         ItemMeta previousPageMeta = previousPage.getItemMeta();
         assert previousPageMeta != null;
@@ -85,7 +84,7 @@ public class GUICreator {
     }
 
     // Otwiera GUI
-    public void displayInventory() {
+    public void displayGUI() {
         invOwner.openInventory(GUI);
     }
 
