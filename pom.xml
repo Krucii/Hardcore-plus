@@ -28,9 +28,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <directory>C:\Users\Nero404\OneDrive\Pulpit\doc\mc_19\plugins</directory>
-    </build>
-
 </project>
