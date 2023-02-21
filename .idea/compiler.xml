@@ -3,8 +3,8 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile name="Annotation profile for Hardcore-plus" enabled="true">
-        <sourceOutputDir name="../../OneDrive/Pulpit/doc/mc_19/plugins/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../OneDrive/Pulpit/doc/mc_19/plugins/generated-test-sources/test-annotations" />
+        <sourceOutputDir name="../../../Nero404/OneDrive/Pulpit/doc/mc_19/plugins/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../Nero404/OneDrive/Pulpit/doc/mc_19/plugins/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Hardcore-plus" />
       </profile>

@@ -57,11 +57,11 @@ public class DifficultiesClickingList {
                 gui.addToGUI(icon);
             }
 
-            if (nextPage < pages) gui.addNextPage();
-            gui.addPreviousPage();
+            if (nextPage < pages) gui.addNextPageButton();
+            gui.addPreviousPageButton();
             gui.addPageInfo(nextPage, lore);
 
-            gui.displayInventory();
+            gui.displayGUI();
         }
 
         else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Poprzednia strona")) {
@@ -74,11 +74,11 @@ public class DifficultiesClickingList {
                 gui.addToGUI(icon);
             }
 
-            gui.addNextPage();
-            if (prevPage != 1) gui.addPreviousPage();
+            gui.addNextPageButton();
+            if (prevPage != 1) gui.addPreviousPageButton();
             gui.addPageInfo(prevPage, lore);
 
-            gui.displayInventory();
+            gui.displayGUI();
         }
     }
 }

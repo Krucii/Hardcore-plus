@@ -15,9 +15,9 @@ public class GUIClicking implements Listener {
         DifficultiesClickingList onClick = new DifficultiesClickingList(e);
 
         // Menu list
-        final String DIFF_LIST = ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia";
+        final String DIFF_CHECK_LIST = ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia";
 
-        if (e.getView().getTitle().equalsIgnoreCase(DIFF_LIST)) {
+        if (e.getView().getTitle().equalsIgnoreCase(DIFF_CHECK_LIST)) {
             e.setCancelled(true);
             onClick.difficultiesMenu();
         }
