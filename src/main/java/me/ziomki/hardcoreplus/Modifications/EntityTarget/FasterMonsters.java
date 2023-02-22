@@ -9,8 +9,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class FasterMonsters extends Modification {
+    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
+        if (!enabled) return;
         EntityTargetEvent event = (EntityTargetEvent) e;
         if (!(event.getEntity() instanceof Monster entity)) return;
         if ((event.getEntity() instanceof Creeper)) return;

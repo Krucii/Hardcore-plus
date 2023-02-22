@@ -2,7 +2,6 @@ package me.ziomki.hardcoreplus.Modifications;
 
 import org.bukkit.event.Event;
 
-import java.util.HashMap;
 
 public abstract class Modification {
 
@@ -15,3 +14,4 @@ public abstract class Modification {
     // on enable i on disable
     // set enabled
 }
+

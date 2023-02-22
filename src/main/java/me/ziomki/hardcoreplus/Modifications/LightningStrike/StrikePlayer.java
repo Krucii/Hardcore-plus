@@ -10,9 +10,10 @@ import org.bukkit.event.Event;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
 public class StrikePlayer extends Modification {
-
+    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
+        if (!enabled) return;
         LightningStrikeEvent event = (LightningStrikeEvent) e;
         if (event.getCause() == LightningStrikeEvent.Cause.CUSTOM) return;
         if (ChanceCalculator.getChance(5)) {

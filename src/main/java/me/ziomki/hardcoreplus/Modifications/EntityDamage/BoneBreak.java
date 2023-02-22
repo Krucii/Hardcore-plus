@@ -11,8 +11,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class BoneBreak extends Modification {
+    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
+        if (!enabled) return;
         EntityDamageEvent event = (EntityDamageEvent) e;
         if (event.getEntity() instanceof Player p) {
             if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {

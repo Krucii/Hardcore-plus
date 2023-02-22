@@ -11,8 +11,10 @@ import org.bukkit.inventory.meta.Damageable;
 
 public class FasterToolBreaking extends Modification {
 
+    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
+        if (!enabled) return;
         BlockBreakEvent event = (BlockBreakEvent) e;
         Player p = event.getPlayer();
         ItemStack itemInHand = p.getInventory().getItemInMainHand();

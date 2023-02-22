@@ -7,8 +7,10 @@ import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class HungerEffect extends Modification {
+    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
+        if (!enabled) return;
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;
         if (!(event.getEntity() instanceof Player p)) return;
 
