@@ -14,6 +14,5 @@ public class FoodLevelChangeEventListener implements Listener {
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.FoodLevelChange, e);
-        //new FoodLevelDowngrade(e, gui_icon_1);
     }
 }

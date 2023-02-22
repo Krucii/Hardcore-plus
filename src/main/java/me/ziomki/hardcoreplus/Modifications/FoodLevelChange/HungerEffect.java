@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
-public class HungerEffect implements Modification {
+public class HungerEffect extends Modification {
     @Override
     public void onEvent(Event e) {
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;

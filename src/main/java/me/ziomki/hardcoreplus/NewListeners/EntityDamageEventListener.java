@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus.NewListeners;
 
+import me.ziomki.hardcoreplus.Modifications.EntityDamage.BoneBreak;
 import me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,5 @@ public class EntityDamageEventListener implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.EntityDamage, e);
-        //new TwistedAnkleEvent(e, gui_icon_1);
     }
 }

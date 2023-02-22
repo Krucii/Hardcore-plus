@@ -5,7 +5,7 @@ import me.ziomki.hardcoreplus.Lists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
+
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 
 public class RandomFallingDown {

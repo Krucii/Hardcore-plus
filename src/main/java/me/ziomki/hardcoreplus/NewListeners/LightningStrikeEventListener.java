@@ -14,6 +14,5 @@ public class LightningStrikeEventListener implements Listener {
     @EventHandler
     public void onLightningStrike(LightningStrikeEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.LightningStrike, e);
-        //new HugeLightningTarget(e, gui_icon_1);
     }
 }

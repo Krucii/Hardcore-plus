@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class FasterMonsters implements Modification {
+public class FasterMonsters extends Modification {
     @Override
     public void onEvent(Event e) {
         EntityTargetEvent event = (EntityTargetEvent) e;

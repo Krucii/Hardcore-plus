@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus.Utils.ClassLoader;
 
+import me.ziomki.hardcoreplus.Modifications.Modification;
 import org.bukkit.event.Event;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -15,13 +16,13 @@ public class ClassLoader {
         PlayerDeath, PlayerMove;
 
     }
-    private static Set<Class<?>>[] eventClasses = new Set[ClassTypes.values().length];
+    private static Set<Class<? extends Modification>>[] eventClasses = new Set[ClassTypes.values().length];
 
     public static void loadEventClasses() {
         for (ClassTypes type : ClassTypes.values()) {
             eventClasses[type.ordinal()] = new HashSet<>();
             Reflections reflections = new Reflections("me.ziomki.hardcoreplus.Modifications." + type, new SubTypesScanner(false));
-            eventClasses[type.ordinal()] = reflections.getSubTypesOf(Object.class);
+            eventClasses[type.ordinal()] = reflections.getSubTypesOf(Modification.class);
         }
     }
 
@@ -30,11 +31,11 @@ public class ClassLoader {
             try {
                 Constructor<?> constructor = c.getConstructor();
                 Object instance = constructor.newInstance();
-                Method method = instance.getClass().getDeclaredMethod("onEvent", Event.class);
+                Method method = instance.getClass().getMethod("execute", Event.class);
                 method.invoke(instance, argument);
             }
             catch (Exception ex) {
-                // hehe
+
             }
         }
     }

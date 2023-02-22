@@ -9,7 +9,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 
-public class FasterToolBreaking implements Modification {
+public class FasterToolBreaking extends Modification {
+
     @Override
     public void onEvent(Event e) {
         BlockBreakEvent event = (BlockBreakEvent) e;

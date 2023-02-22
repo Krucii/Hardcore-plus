@@ -14,6 +14,5 @@ public class EntityTargetEventListener implements Listener {
     @EventHandler
     public void onEntityTarget(EntityTargetEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.EntityTarget, e);
-        //new VeryFastMonsters(e, gui_icon_1);
     }
 }

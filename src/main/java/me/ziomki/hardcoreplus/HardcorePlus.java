@@ -31,6 +31,7 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new LightningStrikeEventListener());
         addListener(new PlayerDeathEventListener());
         addListener(new PlayerMoveEventListener());
+
 //
 //        addCommand("chance", new CheckPercentageTest());
 //        addCommand("utrudnienia", new CheckDifficulties());

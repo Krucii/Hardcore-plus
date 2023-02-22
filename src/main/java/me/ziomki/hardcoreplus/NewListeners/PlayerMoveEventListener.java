@@ -18,6 +18,5 @@ public class PlayerMoveEventListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.PlayerMove, e);
-        //new DangerousDarkness(e, gui_icon_1);
     }
 }

@@ -1,5 +1,6 @@
 package me.ziomki.hardcoreplus.NewListeners;
 
+import me.ziomki.hardcoreplus.Modifications.BlockBreak.FasterToolBreaking;
 import me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,5 @@ public class BlockBreakEventListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.BlockBreak, e);
-        //new FastBreakingTools(e, gui_icon_1);
     }
 }

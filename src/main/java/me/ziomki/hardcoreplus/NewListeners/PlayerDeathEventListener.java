@@ -14,6 +14,5 @@ public class PlayerDeathEventListener implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.PlayerDeath, e);
-        //new DeathEraseItems(e, gui_icon_1);
     }
 }

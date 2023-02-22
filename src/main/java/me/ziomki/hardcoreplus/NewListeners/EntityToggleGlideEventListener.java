@@ -15,6 +15,5 @@ public class EntityToggleGlideEventListener implements Listener {
     @EventHandler
     public void onEntityToggleGlide(EntityToggleGlideEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.EntityToggleGlide, e);
-        //new RandomFallingDown(e, gui_icon_1);
     }
 }

@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BoneBreak implements Modification {
+public class BoneBreak extends Modification {
     @Override
     public void onEvent(Event e) {
         EntityDamageEvent event = (EntityDamageEvent) e;

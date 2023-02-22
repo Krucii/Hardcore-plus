@@ -14,6 +14,5 @@ public class CreatureSpawnEventListener implements Listener {
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.CreatureSpawn, e);
-        //new SpawnPoweredCreepers(e, gui_icon_1);
     }
 }

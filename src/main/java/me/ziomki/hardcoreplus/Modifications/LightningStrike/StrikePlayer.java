@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
-public class StrikePlayer implements Modification {
+public class StrikePlayer extends Modification {
 
     @Override
     public void onEvent(Event e) {

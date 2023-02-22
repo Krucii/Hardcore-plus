@@ -6,7 +6,7 @@ import org.bukkit.entity.Creeper;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-public class SpawnPoweredCreeper implements Modification {
+public class SpawnPoweredCreeper extends Modification {
     @Override
     public void onEvent(Event e) {
         CreatureSpawnEvent event = (CreatureSpawnEvent) e;
