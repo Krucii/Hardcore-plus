@@ -1,26 +1,25 @@
-package me.ziomki.hardcoreplus.Listeners.FoodLevelChangeEvents;
+package me.ziomki.hardcoreplus.Modifications.FoodLevelChange;
 
-import me.ziomki.hardcoreplus.Lists.DifficultiesList;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import me.ziomki.hardcoreplus.Modifications.Modification;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
+import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
-public class FoodLevelDowngrade implements Listener {
+public class HungerEffect implements Modification {
+    @Override
+    public void onEvent(Event e) {
+        FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;
+        if (!(event.getEntity() instanceof Player p)) return;
 
-    public FoodLevelDowngrade(FoodLevelChangeEvent e, DifficultiesList icon_parameters) {
-        if (!(e.getEntity() instanceof Player p)) return;
-
-        for (Biomy b : Biomy.values())
+        for (HungerEffect.Biomy b : HungerEffect.Biomy.values())
         {
             if (p.getWorld().getBiome(p.getLocation()) == b.b) {
                 int oldFoodLevel = p.getFoodLevel();
-                int newFoodLevel = e.getFoodLevel();
+                int newFoodLevel = event.getFoodLevel();
 
                 if(oldFoodLevel > newFoodLevel) {
-                    e.setFoodLevel(e.getFoodLevel() - 1);
+                    event.setFoodLevel(event.getFoodLevel() - 1);
                 }
             }
         }
