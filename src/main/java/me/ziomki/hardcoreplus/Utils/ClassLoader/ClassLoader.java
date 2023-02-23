@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static me.ziomki.hardcoreplus.Modules.ModuleController.enabled_modules;
+import static me.ziomki.hardcoreplus.Modules.ModuleController.setEnabled;
 
 public class ClassLoader {
     public enum ClassTypes {
@@ -27,7 +28,7 @@ public class ClassLoader {
             eventClasses[type.ordinal()] = reflections.getSubTypesOf(Module.class);
             for (Class<?> clazz: eventClasses[type.ordinal()]) {
                 // enable all modules
-                enabled_modules.put(clazz.getName(), true);
+                setEnabled(clazz, true);
             }
         }
     }
