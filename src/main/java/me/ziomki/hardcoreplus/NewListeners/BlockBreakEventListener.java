@@ -1,6 +1,5 @@
 package me.ziomki.hardcoreplus.NewListeners;
 
-import me.ziomki.hardcoreplus.Modifications.BlockBreak.FasterToolBreaking;
 import me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

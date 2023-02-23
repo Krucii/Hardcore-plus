@@ -1,17 +1,15 @@
-package me.ziomki.hardcoreplus.Modifications.PlayerDeath;
+package me.ziomki.hardcoreplus.Modules.PlayerDeath;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import org.bukkit.Material;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class DeathEraseItems extends Modification {
-    public static boolean enabled = true;
+public class DeathEraseItems extends Module {
     @Override
     public void onEvent(Event e) {
-        if (!enabled) return;
         PlayerDeathEvent event = (PlayerDeathEvent) e;
         System.out.println("Event occured");
         for (int i = 0; i < event.getDrops().size(); i++) {

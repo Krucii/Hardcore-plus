@@ -1,16 +1,14 @@
-package me.ziomki.hardcoreplus.Modifications.FoodLevelChange;
+package me.ziomki.hardcoreplus.Modules.FoodLevelChange;
 
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
-public class HungerEffect extends Modification {
-    public static boolean enabled = true;
+public class HungerEffect extends Module {
     @Override
     public void onEvent(Event e) {
-        if (!enabled) return;
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;
         if (!(event.getEntity() instanceof Player p)) return;
 

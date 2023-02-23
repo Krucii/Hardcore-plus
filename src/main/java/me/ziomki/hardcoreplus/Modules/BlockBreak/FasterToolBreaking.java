@@ -1,7 +1,7 @@
-package me.ziomki.hardcoreplus.Modifications.BlockBreak;
+package me.ziomki.hardcoreplus.Modules.BlockBreak;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -9,12 +9,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 
-public class FasterToolBreaking extends Modification {
+public class FasterToolBreaking extends Module {
 
-    public static boolean enabled = true;
     @Override
     public void onEvent(Event e) {
-        if (!enabled) return;
         BlockBreakEvent event = (BlockBreakEvent) e;
         Player p = event.getPlayer();
         ItemStack itemInHand = p.getInventory().getItemInMainHand();

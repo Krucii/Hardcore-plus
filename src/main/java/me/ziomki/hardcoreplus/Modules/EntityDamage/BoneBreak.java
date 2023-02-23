@@ -1,8 +1,8 @@
-package me.ziomki.hardcoreplus.Modifications.EntityDamage;
+package me.ziomki.hardcoreplus.Modules.EntityDamage;
 
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -10,11 +10,9 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BoneBreak extends Modification {
-    public static boolean enabled = true;
+public class BoneBreak extends Module {
     @Override
     public void onEvent(Event e) {
-        if (!enabled) return;
         EntityDamageEvent event = (EntityDamageEvent) e;
         if (event.getEntity() instanceof Player p) {
             if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {

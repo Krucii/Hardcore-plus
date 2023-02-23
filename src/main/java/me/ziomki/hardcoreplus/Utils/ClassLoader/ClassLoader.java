@@ -1,28 +1,34 @@
 package me.ziomki.hardcoreplus.Utils.ClassLoader;
 
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import org.bukkit.event.Event;
 import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+import static me.ziomki.hardcoreplus.Modules.ModuleController.enabled_modules;
+
 public class ClassLoader {
     public enum ClassTypes {
         BlockBreak, CreatureSpawn, EntityDamage, EntityTarget, EntityToggleGlide, FoodLevelChange, LightningStrike,
-        PlayerDeath, PlayerMove;
+        PlayerDeath, PlayerMove
 
     }
-    private static Set<Class<? extends Modification>>[] eventClasses = new Set[ClassTypes.values().length];
+    private static final Set<Class<? extends Module>>[] eventClasses = new Set[ClassTypes.values().length];
 
     public static void loadEventClasses() {
         for (ClassTypes type : ClassTypes.values()) {
             eventClasses[type.ordinal()] = new HashSet<>();
-            Reflections reflections = new Reflections("me.ziomki.hardcoreplus.Modifications." + type, new SubTypesScanner(false));
-            eventClasses[type.ordinal()] = reflections.getSubTypesOf(Modification.class);
+            Reflections reflections = new Reflections("me.ziomki.hardcoreplus.Modules." + type);
+            // load all clases extended by Module.java from me.ziomki.hardcoreplus.Modules.*
+            eventClasses[type.ordinal()] = reflections.getSubTypesOf(Module.class);
+            for (Class<?> clazz: eventClasses[type.ordinal()]) {
+                // enable all modules
+                enabled_modules.put(clazz.getName(), true);
+            }
         }
     }
 
@@ -30,13 +36,12 @@ public class ClassLoader {
         for(var c : eventClasses[t.ordinal()]) {
             try {
                 Constructor<?> constructor = c.getConstructor();
+                // create instance from constructor and invoke method "execute"
                 Object instance = constructor.newInstance();
                 Method method = instance.getClass().getMethod("execute", Event.class);
                 method.invoke(instance, argument);
             }
-            catch (Exception ex) {
-
-            }
+            catch (Exception ignored) { }
         }
     }
 }

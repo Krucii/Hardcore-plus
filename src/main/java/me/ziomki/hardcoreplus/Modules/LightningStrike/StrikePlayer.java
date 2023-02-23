@@ -1,19 +1,17 @@
-package me.ziomki.hardcoreplus.Modifications.LightningStrike;
+package me.ziomki.hardcoreplus.Modules.LightningStrike;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
 import me.ziomki.hardcoreplus.Helpers.RandomPlayer;
-import me.ziomki.hardcoreplus.Modifications.Modification;
+import me.ziomki.hardcoreplus.Modules.Module;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
-public class StrikePlayer extends Modification {
-    public static boolean enabled = true;
+public class StrikePlayer extends Module {
     @Override
     public void onEvent(Event e) {
-        if (!enabled) return;
         LightningStrikeEvent event = (LightningStrikeEvent) e;
         if (event.getCause() == LightningStrikeEvent.Cause.CUSTOM) return;
         if (ChanceCalculator.getChance(5)) {

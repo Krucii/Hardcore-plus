@@ -32,6 +32,8 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new PlayerDeathEventListener());
         addListener(new PlayerMoveEventListener());
 
+        //ModuleController.setEnabled(BoneBreak.class, false);
+
 //
 //        addCommand("chance", new CheckPercentageTest());
 //        addCommand("utrudnienia", new CheckDifficulties());
