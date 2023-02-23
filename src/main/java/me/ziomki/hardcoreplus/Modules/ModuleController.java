@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 public class ModuleController {
-    public static HashMap<String, Boolean> enabled_modules = new HashMap<>();
+    private static final HashMap<String, Boolean> enabled_modules = new HashMap<>();
 
     @SuppressWarnings("unused")
     public static void setEnabled(Class<?> c, Boolean e) {
@@ -25,8 +25,10 @@ public class ModuleController {
 
         }
         catch (Exception ignored) {}
+    }
 
-
+    public static Boolean getEnabled(Class<?> c) {
+        return enabled_modules.get(c.getName());
     }
 
 }

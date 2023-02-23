@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
-import static me.ziomki.hardcoreplus.Modules.ModuleController.enabled_modules;
 import static me.ziomki.hardcoreplus.Modules.ModuleController.setEnabled;
 
 public class ClassLoader {

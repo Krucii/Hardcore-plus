@@ -12,7 +12,7 @@ import static me.ziomki.hardcoreplus.Listeners.PlayerMoveEvents.DangerousDarknes
 public class DarknessScheduler {
 
     public static void darkness() {
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HardcorePlus.getInstance(), () -> damagePlayers(), 0, 20);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HardcorePlus.getInstance(), DarknessScheduler::damagePlayers, 0, 20);
     }
 
     public static void damagePlayers() {
