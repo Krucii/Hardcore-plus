@@ -15,12 +15,36 @@ import java.util.Objects;
 public class GUICreator {
 
     private final Player invOwner;
-    private int itemSlot = 10;
     private final Inventory GUI;
+    private int itemSlot = 10;
 
     public GUICreator(Player invOwner, int invSize, String invName) {
         this.invOwner = invOwner;
         GUI = Bukkit.createInventory(invOwner, invSize, invName);
+    }
+
+    // Układa lore w ładny sposób (opis + szansa)
+    public static List<String> fancyLore(String lore, Double chance) {
+        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
+        int i = 0;
+
+        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
+            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
+
+        if (chance == 100.0) sb.append("\n" + ChatColor.GOLD + "Efekt permanentny");
+        else sb.append("\n" + ChatColor.YELLOW + "Szansa wystąpienia: " + ChatColor.GOLD).append(chance).append("0%");
+        return Arrays.asList(sb.toString().split("\n"));
+    }
+
+    // Układa lore w ładny sposób (opis)
+    public static List<String> fancyLore(String lore) {
+        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
+        int i = 0;
+
+        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
+            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
+
+        return Arrays.asList(sb.toString().split("\n"));
     }
 
     // Wypełnia pustą przestrzeń szarym szkłem
@@ -103,29 +127,5 @@ public class GUICreator {
     public String getPageLore(Inventory inv, int i) {
         if (!inv.getItem(i).getItemMeta().hasLore()) return "";
         else return inv.getItem(i).getItemMeta().getLore().get(2);
-    }
-
-    // Układa lore w ładny sposób (opis + szansa)
-    public static List<String> fancyLore(String lore, Double chance) {
-        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
-        int i = 0;
-
-        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
-            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
-
-        if (chance == 100.0) sb.append("\n" + ChatColor.GOLD + "Efekt permanentny");
-        else sb.append("\n" + ChatColor.YELLOW + "Szansa wystąpienia: " + ChatColor.GOLD).append(chance).append("0%");
-        return Arrays.asList(sb.toString().split("\n"));
-    }
-
-    // Układa lore w ładny sposób (opis)
-    public static List<String> fancyLore(String lore) {
-        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
-        int i = 0;
-
-        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
-            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
-
-        return Arrays.asList(sb.toString().split("\n"));
     }
 }

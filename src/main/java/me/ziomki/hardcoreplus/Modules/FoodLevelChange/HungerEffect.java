@@ -12,13 +12,12 @@ public class HungerEffect extends PluginModule {
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;
         if (!(event.getEntity() instanceof Player p)) return;
 
-        for (HungerEffect.Biomy b : HungerEffect.Biomy.values())
-        {
+        for (HungerEffect.Biomy b : HungerEffect.Biomy.values()) {
             if (p.getWorld().getBiome(p.getLocation()) == b.b) {
                 int oldFoodLevel = p.getFoodLevel();
                 int newFoodLevel = event.getFoodLevel();
 
-                if(oldFoodLevel > newFoodLevel) {
+                if (oldFoodLevel > newFoodLevel) {
                     event.setFoodLevel(event.getFoodLevel() - 1);
                 }
             }
@@ -32,6 +31,7 @@ public class HungerEffect extends PluginModule {
         ERODED_BADLANDS(Biome.ERODED_BADLANDS);
 
         final private Biome b; //dodalem ten final przed commitem wiec nie wiem czy dziala pzdr xD
+
         Biomy(Biome b) {
             this.b = b;
         }

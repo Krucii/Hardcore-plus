@@ -33,13 +33,11 @@ public class DifficultiesClickingList {
             menu = DifficultiesList.getDifficultiesChanceList();
             whatPageType_real = "chance";
             lore.add(ChatColor.GREEN + "utrudnienia procentowe");
-        }
-        else if (Objects.equals(whatPageType, ChatColor.GREEN + "utrudnienia permanentne")) {
+        } else if (Objects.equals(whatPageType, ChatColor.GREEN + "utrudnienia permanentne")) {
             menu = DifficultiesList.getDifficultiesPermanentList();
             whatPageType_real = "permanent";
             lore.add(ChatColor.GREEN + "utrudnienia permanentne");
-        }
-        else {
+        } else {
             menu = DifficultiesList.getDifficultiesList();
             whatPageType_real = "";
             lore.add(ChatColor.GREEN + "wszystkie utrudnienia");
@@ -62,9 +60,7 @@ public class DifficultiesClickingList {
             gui.addPageInfo(nextPage, lore);
 
             gui.displayGUI();
-        }
-
-        else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Poprzednia strona")) {
+        } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Poprzednia strona")) {
             int prevPage = gui.getPageNumber(e.getClickedInventory()) - 1;
 
             gui.fillGlass();

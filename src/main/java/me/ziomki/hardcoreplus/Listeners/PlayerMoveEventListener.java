@@ -16,7 +16,7 @@ public class PlayerMoveEventListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         // reduce lag
-        if(Objects.requireNonNull(e.getTo()).distanceSquared(e.getFrom()) == 0) return;
+        if (Objects.requireNonNull(e.getTo()).distanceSquared(e.getFrom()) == 0) return;
         executeOnEvent(ClassLoader.ClassTypes.PlayerMove, e);
     }
 }

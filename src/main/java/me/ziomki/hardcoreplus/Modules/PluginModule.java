@@ -7,7 +7,7 @@ public abstract class PluginModule {
 
     @SuppressWarnings("unused")
     public final void execute(Event e) {
-        if(PluginModuleController.getEnabled(this.getClass()))
+        if (PluginModuleController.getEnabled(this.getClass()))
             onEvent(e);
     }
 
@@ -17,6 +17,7 @@ public abstract class PluginModule {
     public void onEnable() {
         Bukkit.getLogger().info("Enabled " + this.getClass().getName());
     }
+
     public void onDisable() {
         Bukkit.getLogger().info("Disabled " + this.getClass().getName());
     }

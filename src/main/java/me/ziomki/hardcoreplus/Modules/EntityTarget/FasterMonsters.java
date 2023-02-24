@@ -14,7 +14,7 @@ public class FasterMonsters extends PluginModule {
         EntityTargetEvent event = (EntityTargetEvent) e;
         if (!(event.getEntity() instanceof Monster entity)) return;
         if ((event.getEntity() instanceof Creeper)) return;
-        PotionEffect drug = new PotionEffect(PotionEffectType.SPEED, 20*20, 2);
+        PotionEffect drug = new PotionEffect(PotionEffectType.SPEED, 20 * 20, 2);
         entity.addPotionEffect(drug);
     }
 }

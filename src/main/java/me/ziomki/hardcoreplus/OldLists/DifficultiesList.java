@@ -16,10 +16,10 @@ import java.util.Objects;
 public record DifficultiesList(Double chance, Material item, ChatColor color,
                                String shortDesc, String longDesc) {
     private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
-    private static Integer main_ID = 1;
     private static final HashMap<Integer, List<Object>> difficultiesChanceList = new HashMap<>();
-    private static Integer chance_ID = 1;
     private static final HashMap<Integer, List<Object>> difficultiesPermanentList = new HashMap<>();
+    private static Integer main_ID = 1;
+    private static Integer chance_ID = 1;
     private static Integer permanent_ID = 1;
 
     public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
@@ -29,18 +29,6 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         addEntry();
-    }
-
-    private void addEntry() {
-        List<Object> parameters = new ArrayList<>();
-        parameters.add(chance);
-        parameters.add(item);
-        parameters.add(color);
-        parameters.add(shortDesc);
-        parameters.add(longDesc);
-        if (chance != 100.0) getDifficultiesChanceList().put(chance_ID++, parameters);
-        else getDifficultiesPermanentList().put(permanent_ID++, parameters);
-        getDifficultiesList().put(main_ID++, parameters);
     }
 
     public static HashMap<Integer, List<Object>> getDifficultiesList() {
@@ -53,10 +41,6 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
 
     public static HashMap<Integer, List<Object>> getDifficultiesPermanentList() {
         return difficultiesPermanentList;
-    }
-
-    public Double getChance() {
-        return chance;
     }
 
     public static ItemStack createDiffIcon(int key, String whatList) {
@@ -101,8 +85,10 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
     }
 
     public static int getSizeOfDifficultiesList(String difficultiesCategory) {
-        if (Objects.equals(difficultiesCategory, "procentowe")) return DifficultiesList.getDifficultiesChanceList().size();
-        else if (Objects.equals(difficultiesCategory, "permanentne")) return DifficultiesList.getDifficultiesPermanentList().size();
+        if (Objects.equals(difficultiesCategory, "procentowe"))
+            return DifficultiesList.getDifficultiesChanceList().size();
+        else if (Objects.equals(difficultiesCategory, "permanentne"))
+            return DifficultiesList.getDifficultiesPermanentList().size();
         else return DifficultiesList.getDifficultiesList().size();
     }
 
@@ -132,12 +118,28 @@ public record DifficultiesList(Double chance, Material item, ChatColor color,
         try {
             BufferedReader reader = new BufferedReader(new FileReader("difficulties_rules.yml"));
             String line;
-            while((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void addEntry() {
+        List<Object> parameters = new ArrayList<>();
+        parameters.add(chance);
+        parameters.add(item);
+        parameters.add(color);
+        parameters.add(shortDesc);
+        parameters.add(longDesc);
+        if (chance != 100.0) getDifficultiesChanceList().put(chance_ID++, parameters);
+        else getDifficultiesPermanentList().put(permanent_ID++, parameters);
+        getDifficultiesList().put(main_ID++, parameters);
+    }
+
+    public Double getChance() {
+        return chance;
     }
 }
