@@ -12,7 +12,6 @@ public class DarknessDamageScheduler {
 
     public static void start() {
         taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HardcorePlus.getInstance(), DarknessDamageScheduler::damagePlayers, 0, 20);
-        Bukkit.getLogger().info("Task started: " + taskId);
     }
 
     public static void stop() {

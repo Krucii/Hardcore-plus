@@ -46,6 +46,11 @@ public class HardcorePlus extends JavaPlugin {
 //        darkness();
     }
 
+    @Override
+    public void onDisable() {
+        DarknessDamageScheduler.stop();
+    }
+
     void addListener(Listener lis) {
         getServer().getPluginManager().registerEvents(lis, this);
     }
