@@ -23,7 +23,7 @@ public class DarknessDamageScheduler {
             int light_level = player.getLocation().getBlock().getLightLevel();
             if (light_level < 6) {
                 player.damage(1);
-                ActionBarMessage.sendActionBarMessage(player, ChatColor.RED + "Jestes w ciemnosci, otrzymujesz obrazenia.");
+                ActionBarMessage.sendActionBarMessage(player, ChatColor.RED + "Jesteś w ciemności, otrzymujesz obrażenia.");
             }
         }
     }

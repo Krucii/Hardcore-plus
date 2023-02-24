@@ -15,15 +15,11 @@ public class PluginModuleController {
             Object instance = constructor.newInstance();
             Method method;
             // execute method on disable or on enable
-            if (e) {
-                method = instance.getClass().getMethod("onEnable");
-            } else {
-                method = instance.getClass().getMethod("onDisable");
-            }
+            if (e) method = instance.getClass().getMethod("onEnable");
+            else method = instance.getClass().getMethod("onDisable");
             method.invoke(instance);
 
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) { }
     }
 
     public static Boolean getEnabled(Class<?> c) {
