@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-public class ModuleController {
+public class PluginModuleController {
     private static final HashMap<String, Boolean> enabled_modules = new HashMap<>();
 
     @SuppressWarnings("unused")
@@ -30,5 +30,4 @@ public class ModuleController {
     public static Boolean getEnabled(Class<?> c) {
         return enabled_modules.get(c.getName());
     }
-
 }

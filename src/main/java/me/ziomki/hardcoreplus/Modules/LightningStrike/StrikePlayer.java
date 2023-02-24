@@ -2,14 +2,14 @@ package me.ziomki.hardcoreplus.Modules.LightningStrike;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
 import me.ziomki.hardcoreplus.Helpers.RandomPlayer;
-import me.ziomki.hardcoreplus.Modules.Module;
+import me.ziomki.hardcoreplus.Modules.PluginModule;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.weather.LightningStrikeEvent;
 
-public class StrikePlayer extends Module {
+public class StrikePlayer extends PluginModule {
     @Override
     public void onEvent(Event e) {
         LightningStrikeEvent event = (LightningStrikeEvent) e;

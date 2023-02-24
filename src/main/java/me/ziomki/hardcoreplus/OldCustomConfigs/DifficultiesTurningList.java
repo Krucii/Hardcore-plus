@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.CustomConfigs;
+package me.ziomki.hardcoreplus.OldCustomConfigs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;

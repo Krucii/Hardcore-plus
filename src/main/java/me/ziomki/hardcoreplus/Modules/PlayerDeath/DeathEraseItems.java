@@ -1,13 +1,13 @@
 package me.ziomki.hardcoreplus.Modules.PlayerDeath;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Modules.Module;
+import me.ziomki.hardcoreplus.Modules.PluginModule;
 import org.bukkit.Material;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class DeathEraseItems extends Module {
+public class DeathEraseItems extends PluginModule {
     @Override
     public void onEvent(Event e) {
         PlayerDeathEvent event = (PlayerDeathEvent) e;

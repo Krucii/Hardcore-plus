@@ -3,11 +3,11 @@ package me.ziomki.hardcoreplus.Modules;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
-public abstract class Module {
+public abstract class PluginModule {
 
     @SuppressWarnings("unused")
     public final void execute(Event e) {
-        if(ModuleController.getEnabled(this.getClass()))
+        if(PluginModuleController.getEnabled(this.getClass()))
             onEvent(e);
     }
 

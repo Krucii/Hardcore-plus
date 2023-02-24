@@ -1,6 +1,6 @@
 package me.ziomki.hardcoreplus;
 
-import me.ziomki.hardcoreplus.NewListeners.*;
+import me.ziomki.hardcoreplus.Listeners.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,7 +26,6 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new CreatureSpawnEventListener());
         addListener(new EntityDamageEventListener());
         addListener(new EntityTargetEventListener());
-        addListener(new EntityToggleGlideEventListener());
         addListener(new FoodLevelChangeEventListener());
         addListener(new LightningStrikeEventListener());
         addListener(new PlayerDeathEventListener());
@@ -38,7 +37,6 @@ public class HardcorePlus extends JavaPlugin {
 //        addCommand("chance", new CheckPercentageTest());
 //        addCommand("utrudnienia", new CheckDifficulties());
 //
-//        addCommand("wyjebka", new Wyjebka()); //test command
 //
 //        addListener(new GUIClicking());
 //

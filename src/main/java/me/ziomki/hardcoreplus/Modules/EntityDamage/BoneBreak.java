@@ -2,7 +2,7 @@ package me.ziomki.hardcoreplus.Modules.EntityDamage;
 
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Modules.Module;
+import me.ziomki.hardcoreplus.Modules.PluginModule;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BoneBreak extends Module {
+public class BoneBreak extends PluginModule {
     @Override
     public void onEvent(Event e) {
         EntityDamageEvent event = (EntityDamageEvent) e;

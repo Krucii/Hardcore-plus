@@ -1,7 +1,7 @@
-package me.ziomki.hardcoreplus.Events.GUIClickingList;
+package me.ziomki.hardcoreplus.OldEvents.GUIClickingList;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
-import me.ziomki.hardcoreplus.Lists.DifficultiesList;
+import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;

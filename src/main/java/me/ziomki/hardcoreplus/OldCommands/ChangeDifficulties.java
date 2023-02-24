@@ -1,7 +1,7 @@
-package me.ziomki.hardcoreplus.Commands;
+package me.ziomki.hardcoreplus.OldCommands;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
-import me.ziomki.hardcoreplus.Lists.DifficultiesList;
+import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

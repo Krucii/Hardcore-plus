@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Commands;
+package me.ziomki.hardcoreplus.OldCommands;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
 import org.bukkit.command.Command;

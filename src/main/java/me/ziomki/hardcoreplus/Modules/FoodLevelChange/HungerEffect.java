@@ -1,12 +1,12 @@
 package me.ziomki.hardcoreplus.Modules.FoodLevelChange;
 
-import me.ziomki.hardcoreplus.Modules.Module;
+import me.ziomki.hardcoreplus.Modules.PluginModule;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
-public class HungerEffect extends Module {
+public class HungerEffect extends PluginModule {
     @Override
     public void onEvent(Event e) {
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;

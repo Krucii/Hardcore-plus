@@ -1,4 +1,4 @@
-package me.ziomki.hardcoreplus.Lists;
+package me.ziomki.hardcoreplus.OldLists;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
 import org.bukkit.ChatColor;

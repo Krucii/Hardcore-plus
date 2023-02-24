@@ -1,6 +1,6 @@
-package me.ziomki.hardcoreplus.Events;
+package me.ziomki.hardcoreplus.OldEvents;
 
-import me.ziomki.hardcoreplus.Events.GUIClickingList.DifficultiesClickingList;
+import me.ziomki.hardcoreplus.OldEvents.GUIClickingList.DifficultiesClickingList;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
