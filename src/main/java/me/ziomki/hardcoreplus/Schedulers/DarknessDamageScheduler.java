@@ -4,8 +4,7 @@ import me.ziomki.hardcoreplus.HardcorePlus;
 import me.ziomki.hardcoreplus.Helpers.ActionBarMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-
-import static me.ziomki.hardcoreplus.Modules.PlayerMove.DarknessDamage.lightDamage;
+import org.bukkit.entity.Player;
 
 public class DarknessDamageScheduler {
 
@@ -21,9 +20,12 @@ public class DarknessDamageScheduler {
     }
 
     public static void damagePlayers() {
-        lightDamage.forEach((player -> {
-            player.damage(1);
-            ActionBarMessage.sendActionBarMessage(player, ChatColor.RED + "Jestes w ciemnosci, otrzymujesz obrazenia.");
-        }));
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            int light_level = player.getLocation().getBlock().getLightLevel();
+            if (light_level < 6) {
+                player.damage(1);
+                ActionBarMessage.sendActionBarMessage(player, ChatColor.RED + "Jestes w ciemnosci, otrzymujesz obrazenia.");
+            }
+        }
     }
 }

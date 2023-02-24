@@ -1,6 +1,7 @@
 package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Listeners.*;
+import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,6 +31,8 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new LightningStrikeEventListener());
         addListener(new PlayerDeathEventListener());
         addListener(new PlayerMoveEventListener());
+
+        DarknessDamageScheduler.start();
 
         //ModuleController.setEnabled(BoneBreak.class, false);
 
