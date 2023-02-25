@@ -11,6 +11,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class BoneBreak extends PluginModule {
+
     public static void boneBreak(Player p, int dur, int ampl) {
         p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, dur, ampl));
         ActionBarMessage.sendActionBarMessage(p, ChatColor.RED + "Złamałeś nogę");

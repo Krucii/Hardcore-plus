@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Random;
 
-public class RandomPlayer {
+public class RandomOnlinePlayer {
 
     public static Player getPlayer() {
         return (Player) Bukkit.getOnlinePlayers().toArray()[new Random().nextInt(Bukkit.getOnlinePlayers().size())];

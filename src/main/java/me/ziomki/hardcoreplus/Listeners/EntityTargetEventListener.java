@@ -9,8 +9,6 @@ import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.executeOnEven
 
 public class EntityTargetEventListener implements Listener {
 
-    //DifficultiesList gui_icon_1 = new DifficultiesList(100.0, Material.POTION, ChatColor.AQUA, "Głodne poczwary", "Wszystkie goniące graczy potwory są szybsze.");
-
     @EventHandler
     public void onEntityTarget(EntityTargetEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.EntityTarget, e);

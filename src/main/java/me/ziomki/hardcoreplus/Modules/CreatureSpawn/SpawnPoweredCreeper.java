@@ -7,6 +7,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public class SpawnPoweredCreeper extends PluginModule {
+
     @Override
     public void onEvent(Event e) {
         CreatureSpawnEvent event = (CreatureSpawnEvent) e;

@@ -9,6 +9,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class FasterMonsters extends PluginModule {
+
     @Override
     public void onEvent(Event e) {
         EntityTargetEvent event = (EntityTargetEvent) e;

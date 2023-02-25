@@ -9,8 +9,6 @@ import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.executeOnEven
 
 public class EntityDamageEventListener implements Listener {
 
-    //DifficultiesList gui_icon_1 = new DifficultiesList(5.0, Material.DIRT, org.bukkit.ChatColor.GREEN, "Łamaga", "Pojawia się rosnąca wraz z wysokością szansa na skręcenie kostki podczas upadku.");
-
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.EntityDamage, e);

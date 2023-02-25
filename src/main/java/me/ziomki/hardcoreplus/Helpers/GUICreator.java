@@ -8,6 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,7 @@ public class GUICreator {
 
     private final Player invOwner;
     private final Inventory GUI;
+    // Pierwszy slot w którym pojawi się przedmiot (pierwszy wiersz pusty)
     private int itemSlot = 10;
 
     public GUICreator(Player invOwner, int invSize, String invName) {
@@ -36,7 +38,7 @@ public class GUICreator {
         return Arrays.asList(sb.toString().split("\n"));
     }
 
-    // Układa lore w ładny sposób (opis)
+    // Układa lore w ładny sposób (tylko opis)
     public static List<String> fancyLore(String lore) {
         StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
         int i = 0;
@@ -47,7 +49,7 @@ public class GUICreator {
         return Arrays.asList(sb.toString().split("\n"));
     }
 
-    // Wypełnia pustą przestrzeń szarym szkłem
+    // Wypełnia pustą przestrzeń szarym szkłem - ładniejsze GUI
     public void fillGlass() {
         ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta voidGlassMeta = voidGlass.getItemMeta();
@@ -71,18 +73,12 @@ public class GUICreator {
         ItemStack page = new ItemStack(Material.PAPER);
         ItemMeta pageMeta = page.getItemMeta();
         pageMeta.setDisplayName(ChatColor.WHITE + "Strona " + pageNumber);
+        ArrayList<String> pageLore = new ArrayList<>();
+        pageLore.add(" ");
+        pageLore.add(ChatColor.GREEN + "Ta lista zawiera wszystkie utrudnienia");
+        pageMeta.setLore(pageLore);
         page.setItemMeta(pageMeta);
-
         GUI.setItem(40, page);
-    }
-
-    // Dodaje informację o numerze strony + lore
-    public void addPageInfo(int pageNumber, List<String> lore) {
-        addPageInfo(pageNumber);
-        ItemStack page = GUI.getItem(40);
-        ItemMeta pageMeta = page.getItemMeta();
-        pageMeta.setLore(lore);
-        page.setItemMeta(pageMeta);
     }
 
     // Dodaje przycisk - następna strona
@@ -113,7 +109,7 @@ public class GUICreator {
     }
 
     // Zwraca przedmiot z GUI
-    public ItemStack getIcon(int slot) {
+    public ItemStack getItem(int slot) {
         return GUI.getItem(slot);
     }
 

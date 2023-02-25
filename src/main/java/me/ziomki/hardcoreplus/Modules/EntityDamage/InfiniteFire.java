@@ -6,6 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class InfiniteFire extends PluginModule {
+
     @Override
     public void onEvent(Event e) {
         EntityDamageEvent event = (EntityDamageEvent) e;
