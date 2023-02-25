@@ -12,17 +12,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public record DifficultiesList(Double chance, Material item, ChatColor color,
-                               String shortDesc, String longDesc) {
+                               String shortDesc, String longDesc, Class<?> classPointer) {
 
     private static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
     private static Integer ID = 1;
 
-    public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc) {
+    public DifficultiesList(Double chance, Material item, ChatColor color, String shortDesc, String longDesc, Class<?> classPointer) {
         this.chance = chance;
         this.item = item;
         this.color = color;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
+        this.classPointer = classPointer;
         addEntry();
     }
 

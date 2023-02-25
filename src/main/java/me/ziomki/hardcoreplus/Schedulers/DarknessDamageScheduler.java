@@ -9,13 +9,16 @@ import org.bukkit.entity.Player;
 public class DarknessDamageScheduler {
 
     private static int taskId = 0;
+    public static Boolean running = true;
 
     public static void start() {
         taskId = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HardcorePlus.getInstance(), DarknessDamageScheduler::damagePlayers, 0, 20);
+        running = true;
     }
 
     public static void stop() {
         Bukkit.getServer().getScheduler().cancelTask(taskId);
+        running = false;
     }
 
     public static void damagePlayers() {

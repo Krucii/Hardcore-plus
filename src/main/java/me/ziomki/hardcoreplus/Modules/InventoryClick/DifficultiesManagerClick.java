@@ -2,12 +2,19 @@ package me.ziomki.hardcoreplus.Modules.InventoryClick;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
 import me.ziomki.hardcoreplus.Modules.PluginModule;
+import me.ziomki.hardcoreplus.Modules.PluginModuleController;
 import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
+import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Objects;
+
+import static me.ziomki.hardcoreplus.Helpers.RecordMaker.gui_icon;
 
 public class DifficultiesManagerClick extends PluginModule {
     @Override
@@ -42,5 +49,32 @@ public class DifficultiesManagerClick extends PluginModule {
             newGUI.displayGUI();
         }
 
+        if (Objects.requireNonNull(((Player) event.getWhoClicked()).getPlayer()).isOp()) {
+            Material m = event.getCurrentItem().getType();
+
+            for (var entry : gui_icon) {
+                if (entry.item().equals(m)) {
+                    toggleEvent(entry.classPointer());
+                }
+            }
+        }
+    }
+
+    private void toggleEvent(Class<?> c) {
+        if (c != DarknessDamageScheduler.class) {
+            Boolean enabled = PluginModuleController.getEnabled(c);
+            if (enabled) {
+                PluginModuleController.setEnabled(c, false);
+            } else {
+                PluginModuleController.setEnabled(c, true);
+            }
+        }
+        else {
+            if (DarknessDamageScheduler.running) {
+                DarknessDamageScheduler.stop();
+            } else {
+                DarknessDamageScheduler.start();
+            }
+        }
     }
 }
