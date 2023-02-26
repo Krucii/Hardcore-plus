@@ -1,7 +1,7 @@
 package me.ziomki.hardcoreplus.Modules.LightningStrike;
 
 import me.ziomki.hardcoreplus.Helpers.ChanceCalculator;
-import me.ziomki.hardcoreplus.Helpers.RandomPlayer;
+import me.ziomki.hardcoreplus.Helpers.RandomOnlinePlayer;
 import me.ziomki.hardcoreplus.Modules.PluginModule;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -17,7 +17,7 @@ public class StrikePlayer extends PluginModule {
         if (ChanceCalculator.getChance(5)) {
             event.setCancelled(true);
             World w = event.getWorld();
-            Player randomPlayer = RandomPlayer.getPlayer();
+            Player randomPlayer = RandomOnlinePlayer.getPlayer();
             w.strikeLightning(Bukkit.getPlayer(randomPlayer.getUniqueId()).getLocation());
         }
     }

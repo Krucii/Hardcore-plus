@@ -9,8 +9,6 @@ import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.executeOnEven
 
 public class PlayerDeathEventListener implements Listener {
 
-    //DifficultiesList gui_icon_1 = new DifficultiesList(100.0, Material.CANDLE, ChatColor.DARK_PURPLE, "Bolesna śmierć", "Podczas śmierci połowa przedmiotów znika.");
-
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.PlayerDeath, e);

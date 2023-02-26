@@ -1,6 +1,8 @@
 package me.ziomki.hardcoreplus;
 
+import me.ziomki.hardcoreplus.Helpers.RecordMaker;
 import me.ziomki.hardcoreplus.Listeners.*;
+import me.ziomki.hardcoreplus.OldCommands.DifficultiesManager;
 import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -28,17 +30,20 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new EntityDamageEventListener());
         addListener(new EntityTargetEventListener());
         addListener(new FoodLevelChangeEventListener());
+        addListener(new InventoryClickEventListener());
         addListener(new LightningStrikeEventListener());
         addListener(new PlayerDeathEventListener());
         addListener(new PlayerMoveEventListener());
 
         DarknessDamageScheduler.start();
+        RecordMaker.addAll();
 
+        addCommand("utrudnienia", new DifficultiesManager());
         //ModuleController.setEnabled(BoneBreak.class, false);
 
 //
 //        addCommand("chance", new CheckPercentageTest());
-//        addCommand("utrudnienia", new CheckDifficulties());
+//
 //
 //
 //        addListener(new GUIClicking());

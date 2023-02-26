@@ -9,8 +9,6 @@ import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.executeOnEven
 
 public class FoodLevelChangeEventListener implements Listener {
 
-    //DifficultiesList gui_icon_1 = new DifficultiesList(100.0, Material.DEAD_BUSH, ChatColor.GRAY, "Susza", "Zwiększony spadek poziomu nasycenia na pustyni.");
-
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.FoodLevelChange, e);

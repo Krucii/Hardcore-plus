@@ -7,6 +7,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class HungerEffect extends PluginModule {
+
     @Override
     public void onEvent(Event e) {
         FoodLevelChangeEvent event = (FoodLevelChangeEvent) e;

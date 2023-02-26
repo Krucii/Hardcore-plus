@@ -9,8 +9,6 @@ import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.executeOnEven
 
 public class CreatureSpawnEventListener implements Listener {
 
-    //DifficultiesList gui_icon_1 = new DifficultiesList(5.0, Material.CREEPER_HEAD, ChatColor.DARK_GREEN, "Bombowa imprezka", "Naelektryzowane creepery nie są już tak rzadkim widokiem.");
-
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent e) {
         executeOnEvent(ClassLoader.ClassTypes.CreatureSpawn, e);

@@ -8,6 +8,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class DeathEraseItems extends PluginModule {
+
     @Override
     public void onEvent(Event e) {
         PlayerDeathEvent event = (PlayerDeathEvent) e;
