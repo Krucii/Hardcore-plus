@@ -7,3 +7,6 @@ commands:
   utrudnienia:
     description: Lista utrudnień trybu hardcore
     usage: /<command>
+  info:
+    description: Pokazuje statystyki wskazanego gracza
+    usage: /<command> <player>
