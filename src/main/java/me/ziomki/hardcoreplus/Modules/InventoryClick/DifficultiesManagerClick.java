@@ -1,6 +1,7 @@
 package me.ziomki.hardcoreplus.Modules.InventoryClick;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
+import me.ziomki.hardcoreplus.Helpers.NBT;
 import me.ziomki.hardcoreplus.Modules.PluginModule;
 import me.ziomki.hardcoreplus.Modules.PluginModuleController;
 import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.Objects;
 
@@ -28,18 +30,18 @@ public class DifficultiesManagerClick extends PluginModule {
 
         final GUICreator newGUI = new GUICreator((Player) event.getWhoClicked(), 45, gui_title);
         final String pageName = event.getCurrentItem().getItemMeta().getDisplayName();
-        final double pages = Math.ceil(DifficultiesList.getDifficultiesList().size() / 11.0);
+        final double pages = Math.ceil(DifficultiesList.difficultiesList.size() / 11.0);
 
         if (
-            pageName.equals(ChatColor.WHITE + "Następna strona") ||
-            pageName.equals(ChatColor.WHITE + "Poprzednia strona")
+                pageName.equals(ChatColor.WHITE + "Następna strona") ||
+                        pageName.equals(ChatColor.WHITE + "Poprzednia strona")
         ) {
             assert event.getClickedInventory() != null;
             final int pageNumber = pageName.equals(ChatColor.WHITE + "Następna strona") ? newGUI.getPageNumber(event.getClickedInventory()) + 1 : newGUI.getPageNumber(event.getClickedInventory()) - 1;
             newGUI.fillGlass();
 
             for (int i = 1 + 11 * pageNumber - 11; i < 1 + 11 * pageNumber; i++) {
-                ItemStack icon = DifficultiesList.createDiffIcon(i);
+                ItemStack icon = DifficultiesList.makeItem(i);
                 newGUI.addToGUI(icon);
             }
 
@@ -50,11 +52,13 @@ public class DifficultiesManagerClick extends PluginModule {
         }
 
         if (Objects.requireNonNull(((Player) event.getWhoClicked()).getPlayer()).isOp()) {
-            Material m = event.getCurrentItem().getType();
+            Material clickedIcon = event.getCurrentItem().getType();
 
             for (var entry : gui_icon) {
-                if (entry.item().equals(m)) {
+                if (entry.material().equals(clickedIcon)) {
                     toggleEvent(entry.classPointer());
+                    int slot = event.getSlot();
+                    event.getClickedInventory().setItem(slot, DifficultiesList.makeItem((Integer) NBT.getValue(event.getCurrentItem(), "ID", PersistentDataType.INTEGER)));
                 }
             }
         }
@@ -63,18 +67,10 @@ public class DifficultiesManagerClick extends PluginModule {
     private void toggleEvent(Class<?> c) {
         if (c != DarknessDamageScheduler.class) {
             Boolean enabled = PluginModuleController.getEnabled(c);
-            if (enabled) {
-                PluginModuleController.setEnabled(c, false);
-            } else {
-                PluginModuleController.setEnabled(c, true);
-            }
-        }
-        else {
-            if (DarknessDamageScheduler.running) {
-                DarknessDamageScheduler.stop();
-            } else {
-                DarknessDamageScheduler.start();
-            }
+            PluginModuleController.setEnabled(c, !enabled);
+        } else {
+            if (DarknessDamageScheduler.running) DarknessDamageScheduler.stop();
+            else DarknessDamageScheduler.start();
         }
     }
 }

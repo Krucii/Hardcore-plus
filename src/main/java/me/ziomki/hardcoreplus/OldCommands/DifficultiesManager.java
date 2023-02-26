@@ -19,12 +19,12 @@ public class DifficultiesManager implements CommandExecutor {
         difficultiesGUI.fillGlass();
         difficultiesGUI.addPageInfo(1);
 
-        int sizeOfDifficultiesList = DifficultiesList.getSizeOfDifficultiesList();
+        int sizeOfDifficultiesList = DifficultiesList.difficultiesList.size();
 
         if (sizeOfDifficultiesList > 11) difficultiesGUI.addNextPageButton();
 
         for (int i = 1; i < 12; i++) {
-            ItemStack icon = DifficultiesList.createDiffIcon(i);
+            ItemStack icon = DifficultiesList.makeItem(i);
             difficultiesGUI.addToGUI(icon);
         }
 

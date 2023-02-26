@@ -38,26 +38,18 @@ public class GUICreator {
         return Arrays.asList(sb.toString().split("\n"));
     }
 
-    // Układa lore w ładny sposób (tylko opis)
-    public static List<String> fancyLore(String lore) {
-        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
-        int i = 0;
-
-        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
-            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
-
-        return Arrays.asList(sb.toString().split("\n"));
-    }
-
-    // Wypełnia pustą przestrzeń szarym szkłem - ładniejsze GUI
-    public void fillGlass() {
+    public static ItemStack getVoidGlass() {
         ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta voidGlassMeta = voidGlass.getItemMeta();
         assert voidGlassMeta != null;
         voidGlassMeta.setDisplayName(" ");
         voidGlass.setItemMeta(voidGlassMeta);
-        for (int i = 0; i < GUI.getSize(); i++)
-            GUI.setItem(i, voidGlass);
+        return voidGlass;
+    }
+
+    // Wypełnia pustą przestrzeń szarym szkłem - ładniejsze GUI
+    public void fillGlass() {
+        for (int i = 0; i < GUI.getSize(); i++) GUI.setItem(i, getVoidGlass());
     }
 
     // Dodaje przedmiot, ikonę do GUI
@@ -108,20 +100,14 @@ public class GUICreator {
         invOwner.openInventory(GUI);
     }
 
-    // Zwraca przedmiot z GUI
-    public ItemStack getItem(int slot) {
-        return GUI.getItem(slot);
-    }
-
     // Zwraca numer strony
     public int getPageNumber(Inventory inv) {
         String pageInfo = Objects.requireNonNull(Objects.requireNonNull(inv.getItem(40)).getItemMeta()).getDisplayName().replaceAll("[^0-9]", "");
         return Integer.parseInt(pageInfo);
     }
 
-    // Zwraca konkretnę linię lore strony
-    public String getPageLore(Inventory inv, int i) {
-        if (!inv.getItem(i).getItemMeta().hasLore()) return "";
-        else return inv.getItem(i).getItemMeta().getLore().get(2);
+    // Zwraca przedmiot
+    public void setItem(int item_slot, ItemStack item) {
+        GUI.setItem(item_slot, item);
     }
 }

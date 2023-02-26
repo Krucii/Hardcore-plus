@@ -16,7 +16,7 @@ public class FasterToolBreaking extends PluginModule {
         BlockBreakEvent event = (BlockBreakEvent) e;
         Player p = event.getPlayer();
         ItemStack itemInHand = p.getInventory().getItemInMainHand();
-        if (EnchantmentTarget.TOOL.includes(itemInHand)) {// sprawdzam, czy item w rece to narzedzie
+        if (EnchantmentTarget.TOOL.includes(itemInHand)) {// sprawdzam, czy material w rece to narzedzie
             Damageable d = (Damageable) itemInHand.getItemMeta();
             if (ChanceCalculator.getChance(30)) {
                 assert d != null;
