@@ -8,7 +8,7 @@ import me.ziomki.hardcoreplus.Modules.EntityTarget.FasterMonsters;
 import me.ziomki.hardcoreplus.Modules.FoodLevelChange.HungerEffect;
 import me.ziomki.hardcoreplus.Modules.LightningStrike.StrikePlayer;
 import me.ziomki.hardcoreplus.Modules.PlayerDeath.DeathEraseItems;
-import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
+import me.ziomki.hardcoreplus.Utils.DifficultiesList;
 import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

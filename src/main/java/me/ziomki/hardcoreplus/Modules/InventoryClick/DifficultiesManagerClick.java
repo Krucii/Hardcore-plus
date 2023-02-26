@@ -4,7 +4,7 @@ import me.ziomki.hardcoreplus.Helpers.GUICreator;
 import me.ziomki.hardcoreplus.Helpers.NBT;
 import me.ziomki.hardcoreplus.Modules.PluginModule;
 import me.ziomki.hardcoreplus.Modules.PluginModuleController;
-import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
+import me.ziomki.hardcoreplus.Utils.DifficultiesList;
 import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

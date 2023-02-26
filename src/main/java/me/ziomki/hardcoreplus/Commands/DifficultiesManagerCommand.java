@@ -1,7 +1,7 @@
-package me.ziomki.hardcoreplus.OldCommands;
+package me.ziomki.hardcoreplus.Commands;
 
 import me.ziomki.hardcoreplus.Helpers.GUICreator;
-import me.ziomki.hardcoreplus.OldLists.DifficultiesList;
+import me.ziomki.hardcoreplus.Utils.DifficultiesList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class DifficultiesManager implements CommandExecutor {
+public class DifficultiesManagerCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {

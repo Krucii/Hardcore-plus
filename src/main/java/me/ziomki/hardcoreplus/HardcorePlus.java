@@ -2,7 +2,7 @@ package me.ziomki.hardcoreplus;
 
 import me.ziomki.hardcoreplus.Helpers.RecordMaker;
 import me.ziomki.hardcoreplus.Listeners.*;
-import me.ziomki.hardcoreplus.OldCommands.DifficultiesManager;
+import me.ziomki.hardcoreplus.Commands.DifficultiesManagerCommand;
 import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -38,17 +38,7 @@ public class HardcorePlus extends JavaPlugin {
         DarknessDamageScheduler.start();
         RecordMaker.addAll();
 
-        addCommand("utrudnienia", new DifficultiesManager());
-        //ModuleController.setEnabled(BoneBreak.class, false);
-
-//
-//        addCommand("chance", new CheckPercentageTest());
-//
-//
-//
-//        addListener(new GUIClicking());
-//
-//        darkness();
+        addCommand("utrudnienia", new DifficultiesManagerCommand());
     }
 
     @Override
