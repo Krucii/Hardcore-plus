@@ -3,6 +3,7 @@ package me.ziomki.hardcoreplus.Commands;
 import me.ziomki.hardcoreplus.HardcorePlus;
 import me.ziomki.hardcoreplus.Helpers.BookHelper.Book;
 import me.ziomki.hardcoreplus.Helpers.BookHelper.Page;
+import me.ziomki.hardcoreplus.Helpers.DatabaseController.Database;
 import me.ziomki.hardcoreplus.Helpers.DatabaseController.Stats;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,22 +19,35 @@ public class InfoCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (!(commandSender instanceof Player p)) return false;
-        if (args.length != 1) return false;
+        String infoTarget;
+        if (args.length != 1)
+            infoTarget = p.getName();
+        else
+            infoTarget = args[0];
 
-//        Stats stat;
-//        try {
-//            stat = HardcorePlus.getDatabase().getAll(Objects.requireNonNull(Bukkit.getPlayer(args[0])));
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        Database db = HardcorePlus.getDatabase();
+
+        Stats stat = new Stats();
+
+        try {
+            if (db.playerExists(infoTarget) == 1)
+                stat = db.getAll(infoTarget);
+            else {
+                p.sendMessage(ChatColor.GOLD + "Nie znaleziono gracza " + ChatColor.RED + infoTarget);
+                return true;
+            }
+        } catch (SQLException ignored) {
+        }
+
         Book bm = new Book("Plugin", "Stats");
         Page page = new Page();
-        page.addText("Witam");
+        page.addText("Statystyki gracza " + stat.getPlayer());
+        page.addText(""); // przerwa
+        page.addText("Zabójstwa: " + stat.getKills());
+        page.addText("Śmierci: " + stat.getDeaths());
         bm.addPage(page);
-        //bm.addPage(ChatColor.BOLD + stat.getPlayer());
 
         p.openBook(bm.getItemStack());
-
 
         return true;
     }

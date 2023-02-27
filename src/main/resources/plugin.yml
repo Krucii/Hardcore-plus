@@ -9,4 +9,4 @@ commands:
     usage: /<command>
   info:
     description: Pokazuje statystyki wskazanego gracza
-    usage: /<command> <player>
+    usage: /<command> [player]

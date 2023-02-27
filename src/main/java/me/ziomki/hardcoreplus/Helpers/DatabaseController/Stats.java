@@ -35,7 +35,7 @@ public class Stats {
         return deaths;
     }
 
-    public void setDeaths(int total) {
+    public void setDeaths(int deaths) {
         this.deaths = deaths;
     }
 }
