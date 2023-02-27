@@ -2,6 +2,7 @@ package me.ziomki.hardcoreplus.Commands;
 
 import me.ziomki.hardcoreplus.HardcorePlus;
 import me.ziomki.hardcoreplus.Helpers.BookHelper.Book;
+import me.ziomki.hardcoreplus.Helpers.BookHelper.Page;
 import me.ziomki.hardcoreplus.Helpers.DatabaseController.Stats;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,14 +20,17 @@ public class InfoCommand implements CommandExecutor {
         if (!(commandSender instanceof Player p)) return false;
         if (args.length != 1) return false;
 
-        Stats stat;
-        try {
-            stat = HardcorePlus.getDatabase().getAll(Objects.requireNonNull(Bukkit.getPlayer(args[0])));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        Stats stat;
+//        try {
+//            stat = HardcorePlus.getDatabase().getAll(Objects.requireNonNull(Bukkit.getPlayer(args[0])));
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
         Book bm = new Book("Plugin", "Stats");
-        bm.addPage(ChatColor.BOLD + stat.getPlayer());
+        Page page = new Page();
+        page.addText("Witam");
+        bm.addPage(page);
+        //bm.addPage(ChatColor.BOLD + stat.getPlayer());
 
         p.openBook(bm.getItemStack());
 

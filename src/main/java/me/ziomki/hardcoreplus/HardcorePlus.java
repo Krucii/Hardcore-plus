@@ -54,6 +54,7 @@ public class HardcorePlus extends JavaPlugin {
         addListener(new InventoryClickEventListener());
         addListener(new LightningStrikeEventListener());
         addListener(new PlayerDeathEventListener());
+        addListener(new PlayerJoinEventListener());
         addListener(new PlayerMoveEventListener());
 
         DarknessDamageScheduler.start();

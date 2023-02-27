@@ -18,10 +18,8 @@ public class Book {
         bookMeta.setTitle(title);
     }
 
-    public void addPage(String text) {
-        BaseComponent[] components = ComponentSerializer.parse(ComponentSerializer.toString(
-                new TextComponent(text)));
-        bookMeta.spigot().addPage(components);
+    public void addPage(Page page) {
+        bookMeta.spigot().addPage(page.getPage());
     }
 
     public ItemStack getItemStack() {
