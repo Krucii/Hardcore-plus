@@ -17,11 +17,14 @@ public class DifficultiesManagerCommand implements CommandExecutor {
 
         GUICreator difficultiesGUI = new GUICreator(p, 45, ChatColor.RED + "" + ChatColor.BOLD + "Piekielne utrudnienia");
         difficultiesGUI.fillGlass();
-        difficultiesGUI.addPageInfo(1);
+
 
         int sizeOfDifficultiesList = DifficultiesList.difficultiesList.size();
 
-        if (sizeOfDifficultiesList > 11) difficultiesGUI.addNextPageButton();
+        if (sizeOfDifficultiesList > 11) {
+            difficultiesGUI.addNextPageButton();
+            difficultiesGUI.addPageInfo(1);
+        }
 
         for (int i = 1; i < 12; i++) {
             ItemStack icon = DifficultiesList.makeItem(i);
