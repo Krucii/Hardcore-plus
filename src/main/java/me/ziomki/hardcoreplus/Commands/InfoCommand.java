@@ -1,7 +1,7 @@
 package me.ziomki.hardcoreplus.Commands;
 
 import me.ziomki.hardcoreplus.HardcorePlus;
-import me.ziomki.hardcoreplus.Helpers.BookMaker;
+import me.ziomki.hardcoreplus.Helpers.BookHelper.Book;
 import me.ziomki.hardcoreplus.Helpers.DatabaseController.Stats;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +25,7 @@ public class InfoCommand implements CommandExecutor {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        BookMaker bm = new BookMaker("Plugin", "Stats");
+        Book bm = new Book("Plugin", "Stats");
         bm.addPage(ChatColor.BOLD + stat.getPlayer());
 
         p.openBook(bm.getItemStack());

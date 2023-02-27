@@ -39,20 +39,16 @@ public abstract class Database {
         return stats;
     }
 
-    public void addDeath(Player player) throws SQLException {
+    public void addToStats(Player player, Stat stat) throws SQLException {
         try (Connection conn = getSQLConnection();
-             PreparedStatement ps = conn.prepareStatement("UPDATE " + TABLE_NAME + " SET deaths = deaths + 1 WHERE player = ?")) {
+             PreparedStatement ps = conn.prepareStatement("UPDATE " + TABLE_NAME + " SET "+ stat +" = "+ stat +" + 1 WHERE player = ?")) {
             ps.setString(1, player.getName());
             ps.executeUpdate();
         }
     }
 
-    public void addKill(Player player) throws SQLException {
-        try (Connection conn = getSQLConnection();
-             PreparedStatement ps = conn.prepareStatement("UPDATE " + TABLE_NAME + " SET kills = kills + 1 WHERE player = ?")) {
-            ps.setString(1, player.getName());
-            ps.executeUpdate();
-        }
+    public enum Stat {
+        kills, deaths
     }
 //    public void setAll(Player player, List<Stats> stats) throws SQLException {
 //        try (Connection conn = getSQLConnection();
