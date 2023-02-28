@@ -1,23 +1,23 @@
 package me.ziomki.hardcoreplus;
 
-import me.ziomki.hardcoreplus.Commands.Wyjebka;
-import me.ziomki.hardcoreplus.Commands.CheckDifficulties;
-import me.ziomki.hardcoreplus.Commands.CheckPercentageTest;
-import me.ziomki.hardcoreplus.Events.GUIClicking;
+import me.ziomki.hardcoreplus.Commands.InfoCommand;
+import me.ziomki.hardcoreplus.Helpers.DatabaseController.Database;
+import me.ziomki.hardcoreplus.Helpers.DatabaseController.SQLite;
+import me.ziomki.hardcoreplus.Helpers.RecordMaker;
 import me.ziomki.hardcoreplus.Listeners.*;
-import me.ziomki.hardcoreplus.Listeners.EntityTargetEvents.VeryFastMonsters;
-import me.ziomki.hardcoreplus.Listeners.EntityToggleGlideEvents.RandomFallingDown;
-import me.ziomki.hardcoreplus.Listeners.FoodLevelChangeEvents.FoodLevelDowngrade;
-import me.ziomki.hardcoreplus.Listeners.LightningStrikeEvents.HugeLightningTarget;
-import me.ziomki.hardcoreplus.Listeners.PlayerDeathEvents.DeathEraseItems;
-import me.ziomki.hardcoreplus.Listeners.PlayerMoveEvents.DangerousDarkness;
+import me.ziomki.hardcoreplus.Commands.DifficultiesManagerCommand;
+import me.ziomki.hardcoreplus.Schedulers.DarknessDamageScheduler;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.sql.SQLException;
 import java.util.Objects;
 
-import static me.ziomki.hardcoreplus.Schedulers.DarknessScheduler.darkness;
+import static me.ziomki.hardcoreplus.Utils.ClassLoader.ClassLoader.loadEventClasses;
 
 public class HardcorePlus extends JavaPlugin {
 
@@ -27,28 +27,51 @@ public class HardcorePlus extends JavaPlugin {
         return instance;
     }
 
+    private static Database db;
+
     @Override
     public void onEnable() {
         instance = this;
 
-        addListener(new BlockBreakEvent_Executor());
-        addListener(new CreatureSpawnEvent_Executor());
-        addListener(new EntityDamageEvent_Executor());
-        addListener(new EntityTargetEvent_Executor());
-        addListener(new EntityToggleGlideEvent_Executor());
-        addListener(new FoodLevelChangeEvent_Executor());
-        addListener(new LightningStrikeEvent_Executor());
-        addListener(new PlayerDeathEvent_Executor());
-        addListener(new PlayerMoveEvent_Executor());
+        if (!instance.getDataFolder().exists()) {
+            try {
+                Files.createDirectory(instance.getDataFolder().toPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-        addCommand("chance", new CheckPercentageTest());
-        addCommand("utrudnienia", new CheckDifficulties());
-        
-        addCommand("wyjebka", new Wyjebka()); //test command
+        db = new SQLite(this);
+        db.load();
 
-        addListener(new GUIClicking());
+        loadEventClasses();
 
-        darkness();
+        addListener(new BlockBreakEventListener());
+        addListener(new CreatureSpawnEventListener());
+        addListener(new EntityAirChangeEventListener());
+        addListener(new EntityDamageEventListener());
+        addListener(new EntityTargetEventListener());
+        addListener(new FoodLevelChangeEventListener());
+        addListener(new InventoryClickEventListener());
+        addListener(new LightningStrikeEventListener());
+        addListener(new PlayerDeathEventListener());
+        addListener(new PlayerJoinEventListener());
+        addListener(new PlayerMoveEventListener());
+
+        DarknessDamageScheduler.start();
+        RecordMaker.addAll();
+
+        addCommand("utrudnienia", new DifficultiesManagerCommand());
+        addCommand("info", new InfoCommand());
+    }
+
+    @Override
+    public void onDisable() {
+        DarknessDamageScheduler.stop();
+    }
+
+    public static Database getDatabase() {
+        return db;
     }
 
     void addListener(Listener lis) {
