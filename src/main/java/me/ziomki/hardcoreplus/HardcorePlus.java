@@ -48,6 +48,7 @@ public class HardcorePlus extends JavaPlugin {
 
         addListener(new BlockBreakEventListener());
         addListener(new CreatureSpawnEventListener());
+        addListener(new EntityAirChangeEventListener());
         addListener(new EntityDamageEventListener());
         addListener(new EntityTargetEventListener());
         addListener(new FoodLevelChangeEventListener());

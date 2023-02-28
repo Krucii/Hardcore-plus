@@ -41,7 +41,7 @@ public class ClassLoader {
     }
 
     public enum ClassTypes {
-        BlockBreak, CreatureSpawn, EntityDamage, EntityTarget, FoodLevelChange, InventoryClick, LightningStrike,
+        BlockBreak, CreatureSpawn, EntityAirChange, EntityDamage, EntityTarget, FoodLevelChange, InventoryClick, LightningStrike,
         PlayerDeath, PlayerJoin, PlayerMove
     }
 }
