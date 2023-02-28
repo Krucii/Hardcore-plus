@@ -47,7 +47,7 @@ public class DifficultiesManagerClick extends PluginModule {
 
             if (pageNumber < pages) newGUI.addNextPageButton();
             if (pageNumber != 1) newGUI.addPreviousPageButton();
-            newGUI.addPageInfo(pageNumber);
+            if (pages != 1) newGUI.addPageInfo(pageNumber);
             newGUI.displayGUI();
         }
 
@@ -57,8 +57,9 @@ public class DifficultiesManagerClick extends PluginModule {
             for (var entry : gui_icon) {
                 if (entry.material().equals(clickedIcon)) {
                     toggleEvent(entry.classPointer());
-                    int slot = event.getSlot();
-                    event.getClickedInventory().setItem(slot, DifficultiesList.makeItem((Integer) NBT.getValue(event.getCurrentItem(), "ID", PersistentDataType.INTEGER)));
+                    int clickedSlot = event.getSlot();
+                    ItemStack clickedItemRefreshed = DifficultiesList.makeItem((Integer) NBT.getValue(event.getCurrentItem(), "ID", PersistentDataType.INTEGER));
+                    event.getClickedInventory().setItem(clickedSlot, clickedItemRefreshed);
                 }
             }
         }

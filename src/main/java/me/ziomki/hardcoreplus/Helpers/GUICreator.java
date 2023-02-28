@@ -17,7 +17,7 @@ public class GUICreator {
 
     private final Player invOwner;
     private final Inventory GUI;
-    // Pierwszy slot w którym pojawi się przedmiot (pierwszy wiersz pusty)
+    // Pierwszy slot, w którym pojawi się przedmiot (pierwszy wiersz pusty)
     private int itemSlot = 10;
 
     public GUICreator(Player invOwner, int invSize, String invName) {
@@ -27,18 +27,20 @@ public class GUICreator {
 
     // Układa lore w ładny sposób (opis + szansa)
     public static List<String> fancyLore(String lore, Double chance) {
-        StringBuilder sb = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
+        StringBuilder formattedLore = new StringBuilder("\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "\"" + lore + "\"\n");
         int i = 0;
 
-        while (i + 35 < sb.length() && (i = sb.lastIndexOf(" ", i + 35)) != -1)
-            sb.replace(i, i + 1, "\n" + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
+        while (i + 35 < formattedLore.length() && (i = formattedLore.lastIndexOf(" ", i + 35)) != -1) {
+            formattedLore.replace(i, i + 1, String.format("\n%s%s", ChatColor.DARK_GRAY, ChatColor.ITALIC));
+        }
 
-        if (chance == 100.0) sb.append("\n" + ChatColor.GOLD + "Efekt permanentny");
-        else sb.append("\n" + ChatColor.YELLOW + "Szansa wystąpienia: " + ChatColor.GOLD).append(chance).append("0%");
-        return Arrays.asList(sb.toString().split("\n"));
+        if (chance == 100.0) formattedLore.append(String.format("\n%sEfekt permanentny", ChatColor.GOLD));
+        else formattedLore.append(String.format("\n%sSzansa wystąpienia: %s%s0%%", ChatColor.YELLOW, ChatColor.GOLD, chance));
+
+        return List.of(formattedLore.toString().split("\n"));
     }
 
-    public static ItemStack getVoidGlass() {
+    public static ItemStack makeVoidGlass() {
         ItemStack voidGlass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta voidGlassMeta = voidGlass.getItemMeta();
         assert voidGlassMeta != null;
@@ -49,7 +51,7 @@ public class GUICreator {
 
     // Wypełnia pustą przestrzeń szarym szkłem - ładniejsze GUI
     public void fillGlass() {
-        for (int i = 0; i < GUI.getSize(); i++) GUI.setItem(i, getVoidGlass());
+        for (int i = 0; i < GUI.getSize(); i++) GUI.setItem(i, makeVoidGlass());
     }
 
     // Dodaje przedmiot, ikonę do GUI
@@ -67,7 +69,8 @@ public class GUICreator {
         pageMeta.setDisplayName(ChatColor.WHITE + "Strona " + pageNumber);
         ArrayList<String> pageLore = new ArrayList<>();
         pageLore.add(" ");
-        pageLore.add(ChatColor.GREEN + "Ta lista zawiera wszystkie utrudnienia");
+        pageLore.add(ChatColor.GREEN + "Ta lista zawiera");
+        pageLore.add(ChatColor.GREEN + "wszystkie utrudnienia");
         pageMeta.setLore(pageLore);
         page.setItemMeta(pageMeta);
         GUI.setItem(40, page);
@@ -75,25 +78,24 @@ public class GUICreator {
 
     // Dodaje przycisk - następna strona
     public void addNextPageButton() {
-        ItemStack nextPage = new ItemStack(Material.ARROW);
-        ItemMeta nextPageMeta = nextPage.getItemMeta();
-        assert nextPageMeta != null;
-        nextPageMeta.setDisplayName(ChatColor.WHITE + "Następna strona");
-        nextPage.setItemMeta(nextPageMeta);
-
-        GUI.setItem(44, nextPage);
+        addButton("Następna strona", 44);
     }
 
     // Dodaje przycisk - poprzednia strona
     public void addPreviousPageButton() {
-        ItemStack previousPage = new ItemStack(Material.ARROW);
-        ItemMeta previousPageMeta = previousPage.getItemMeta();
-        assert previousPageMeta != null;
-        previousPageMeta.setDisplayName(ChatColor.WHITE + "Poprzednia strona");
-        previousPage.setItemMeta(previousPageMeta);
-
-        GUI.setItem(36, previousPage);
+        addButton("Poprzednia strona", 36);
     }
+
+    public void addButton(String displayName, int slot) {
+        ItemStack button = new ItemStack(Material.ARROW);
+        ItemMeta buttonMeta = button.getItemMeta();
+        assert buttonMeta != null;
+        buttonMeta.setDisplayName(ChatColor.WHITE + displayName);
+        button.setItemMeta(buttonMeta);
+
+        GUI.setItem(slot, button);
+    }
+
 
     // Otwiera GUI
     public void displayGUI() {
@@ -104,10 +106,5 @@ public class GUICreator {
     public int getPageNumber(Inventory inv) {
         String pageInfo = Objects.requireNonNull(Objects.requireNonNull(inv.getItem(40)).getItemMeta()).getDisplayName().replaceAll("[^0-9]", "");
         return Integer.parseInt(pageInfo);
-    }
-
-    // Zwraca przedmiot
-    public void setItem(int item_slot, ItemStack item) {
-        GUI.setItem(item_slot, item);
     }
 }

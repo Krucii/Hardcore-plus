@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public record DifficultiesList(Double chance, Material material, ChatColor color,
-                               String shortDesc, String longDesc, Class<?> classPointer) {
+public record DifficultiesList(Double chance, Material material, ChatColor color, String shortDesc,
+                               String longDesc, Class<?> classPointer) {
 
     public static final HashMap<Integer, List<Object>> difficultiesList = new HashMap<>();
     private static Integer ID = 1;
 
-    public DifficultiesList(Double chance, Material material, ChatColor color,
-                            String shortDesc, String longDesc, Class<?> classPointer) {
+    public DifficultiesList(Double chance, Material material, ChatColor color, String shortDesc,
+                            String longDesc, Class<?> classPointer) {
         this.chance = chance;
         this.material = material;
         this.color = color;
@@ -35,28 +35,32 @@ public record DifficultiesList(Double chance, Material material, ChatColor color
         addEntry();
     }
 
+    public static Integer getID() {
+        return ID;
+    }
+
     public static ItemStack makeItem(Integer item_ID) {
-        List<Object> item_parameters = DifficultiesList.getDifficultiesList().get(item_ID);
-        if (item_parameters == null) return GUICreator.getVoidGlass();
+        List<Object> item_parameters = DifficultiesList.difficultiesList.get(item_ID);
+        if (item_parameters == null) return GUICreator.makeVoidGlass();
 
         // Getting parameters
         Double chance = (Double) item_parameters.get(0);
         Material material = (Material) item_parameters.get(1);
         ChatColor color = (ChatColor) item_parameters.get(2);
-        String shortDesc = (String) item_parameters.get(3),
-                longDesc = (String) item_parameters.get(4);
+        String shortDesc = (String) item_parameters.get(3);
+        String longDesc = (String) item_parameters.get(4);
         Class<?> classPointer = (Class<?>) item_parameters.get(5);
 
         // Creating icon
-        ItemStack diffItem = new ItemStack(material, 1);
+        ItemStack diffItem = new ItemStack(material);
         ItemMeta diffMeta = diffItem.getItemMeta();
         assert diffMeta != null;
         diffMeta.setDisplayName(color + shortDesc + checkStatus(classPointer));
         diffMeta.setLore(GUICreator.fancyLore(longDesc, chance));
         diffMeta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
         diffMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        PersistentDataContainer nbt = diffMeta.getPersistentDataContainer();
-        nbt.set(new NamespacedKey(HardcorePlus.getInstance(), "ID"), PersistentDataType.INTEGER, item_ID);
+        PersistentDataContainer diffItemNBT = diffMeta.getPersistentDataContainer();
+        diffItemNBT.set(new NamespacedKey(HardcorePlus.getInstance(), "ID"), PersistentDataType.INTEGER, item_ID);
         diffItem.setItemMeta(diffMeta);
         return diffItem;
     }
@@ -71,11 +75,6 @@ public record DifficultiesList(Double chance, Material material, ChatColor color
         else return " - " + ChatColor.RED + "wyłączone";
     }
 
-    // Returns list of ID's and parameters for them that allows to create icon
-    public static HashMap<Integer, List<Object>> getDifficultiesList() {
-        return difficultiesList;
-    }
-
     // Adds entry to the HashMap
     private void addEntry() {
         List<Object> parameters = new ArrayList<>();
@@ -86,6 +85,6 @@ public record DifficultiesList(Double chance, Material material, ChatColor color
         parameters.add(longDesc);
         parameters.add(classPointer);
 
-        getDifficultiesList().put(ID++, parameters);
+        difficultiesList.put(ID++, parameters);
     }
 }
