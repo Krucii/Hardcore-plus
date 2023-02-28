@@ -4,11 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import me.ziomki.hardcoreplus.HardcorePlus;
-import org.bukkit.entity.Player;
 
 public abstract class Database {
     protected HardcorePlus plugin;
@@ -73,16 +70,4 @@ public abstract class Database {
     public enum Stat {
         kills, deaths
     }
-//    public void setAll(Player player, List<Stats> stats) throws SQLException {
-//        try (Connection conn = getSQLConnection();
-//             PreparedStatement ps = conn.prepareStatement("REPLACE INTO " + TABLE_NAME + " (player, kills, deaths) VALUES (?, ?, ?)")) {
-//            for (Stats stat : stats) {
-//                ps.setString(1, player.getName());
-//                ps.setInt(2, stat.getKills());
-//                ps.setInt(3, stat.getDeaths());
-//                ps.addBatch();
-//            }
-//            ps.executeBatch();
-//        }
-//    }
 }
